@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import { Sidebar } from './components/Sidebar';
+import { ContenrHome } from './pages/ContentHome';
+import { Navbar } from './components/Navbar';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Sidebar } from './components/Sidebar';
+// import { home } from './pages/home';
+// import './components/sidebar'
+import { Alumnos } from './pages/Alumnos';
+import { Profesores } from './pages/Profesores';
+import AlumnosProvider from './context/AlumnosContext';
+import FolioProvider from './context/FolioContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AlumnosProvider>
+        <FolioProvider>
+          <Navbar />
+          <div className="container-fluid">
+            <div className="row">
+              <Sidebar />
+              <Switch>
+                <Route path="/alumnos" component={Alumnos} />
+                <Route path="/profesores" component={Profesores} />
+                <Route path="" component={ContenrHome} />
+              </Switch>
+            </div>
+          </div>
+        </FolioProvider>
+      </AlumnosProvider>
+    </Router>
   );
 }
 
