@@ -38,10 +38,10 @@ class AuthHandler {
   //     return reactLocalStorage.get("refresh");
   //   }
 
-  //   static logoutUser() {
-  //     reactLocalStorage.remove("token");
-  //     reactLocalStorage.remove("refresh");
-  //   }
+  static logoutUser() {
+    reactLocalStorage.remove("token");
+    reactLocalStorage.remove("refresh");
+  }
 
   //   static checkTokenExpiry() {
   //     var expire = false;

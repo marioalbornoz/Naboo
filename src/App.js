@@ -11,13 +11,15 @@ import { Profesores } from './pages/Profesores';
 import AlumnosProvider from './context/AlumnosContext';
 import FolioProvider from './context/FolioContext';
 import { Login } from './pages/Login';
-import { Inicio } from './pages/Inicio';
+import { PrivateRoute } from './utils/PrivateRoute';
+import { Logout } from './pages/Logout';
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path='/logout' component={Logout}/>
         <AlumnosProvider>
         <FolioProvider>
           <Navbar />
@@ -25,9 +27,9 @@ function App() {
             <div className="row">
               <Sidebar />
               <Switch>
-                <Route exact path="/alumnos" component={Alumnos} />
-                <Route exact path="/profesores" component={Profesores} />
-                <Route exact path="/" component={ContenrHome} />
+                <PrivateRoute exact path="/alumnos" component={Alumnos} />
+                <PrivateRoute exact path="/profesores" component={Profesores} />
+                <PrivateRoute exact path="/" component={ContenrHome} />
               </Switch>
             </div>
           </div>
