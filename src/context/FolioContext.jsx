@@ -14,7 +14,7 @@ const FolioProvider = (props) => {
         const obtenerListaFolio = async() => {
             const url = `http://localhost:8000/api/folio/`;
             const folios = await axios(url);
-            guardarFolioLista(folios.data);
+            console.log(folios);
         }
         obtenerListaFolio();
     }, [])

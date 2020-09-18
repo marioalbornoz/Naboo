@@ -31,4 +31,10 @@
 
 .redondeado{
     border-radius: 10px;
+    border: nones !important;
+}
+
+.fondo {
+    /* background-color: #D8F5DA; */
+    background-color: #ffffff;
 }

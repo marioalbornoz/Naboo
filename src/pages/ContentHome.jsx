@@ -1,10 +1,11 @@
 import React from 'react'
+import './content.css'
 
 export const ContenrHome = () => {
     return (
       <div id="content" className="p-4 p-md-5 col-lg-10 col-md-9">
         
-        <h2 className="mb-4">Folio Estudiantil #07</h2>
+        <h2 className="mb-4" >Folio Estudiantil #07</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
