@@ -27,6 +27,7 @@ export const Login = () => {
     
   };
 
+  // captura un error
   const handleAjaxResponse = (data) => {
     console.log(data.error);
     if (data.error === false) {
