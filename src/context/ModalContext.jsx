@@ -1,5 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from "axios";
+import Config from '../utils/Config';
+import AuthHandler from '../utils/AuthHandler';
 
 //creando el context
 export const ModalContext = createContext();
@@ -13,17 +15,21 @@ const ModalProvider = (props) => {
     //ejecutar llamado a la api
     useEffect(() => {
       
-        const enviarHistoria = async() => {
-            const url = `http://localhost:8000/api/folio/`;
-            const folios = await axios.post(url)
-        }
-        enviarHistoria();
-    }, [id])
+        const axiosAPI = axios.create({
+            baseURL: Config.listFolios,
+            timeout: 5000,
+            headers: {
+              Authorization: AuthHandler.getLoginToken() ? "Bearer " + AuthHandler.getLoginToken() : null,
+              "Content-Type": "application/json",
+              accept: "application/json",
+            },
+          });
+        axiosAPI();
+ }, [])
     return (
         <ModalContext.Provider
             value={{
                 guardarHistoria,
-                guardarHistoria
             }}
             >
             {props.children}

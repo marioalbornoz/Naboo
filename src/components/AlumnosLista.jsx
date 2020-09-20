@@ -13,25 +13,26 @@ export const AlumnosLista = () => {
   const seleccionAlumno = (id) => {
     setindice(id);
   }
-    return (
-      <div className="col col-12 m-4 ">
-        <form className="form-inline m-4 ">
-          <div className="form-group mb-2">Buscar alumno</div>
-          <div className="form-group mx-sm-3 mb-2">
-            <label htmlFor="text" className="sr-only">
-              Alumno
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword2"
-              placeholder="Ej. Albornoz"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary mb-2">
+    return alumnos ? (
+      <div className="col col-12 ">
+        <form className="input-group mb-3 h-200">
+        <input
+          type="text"
+          name="content"
+          id="content"
+          
+          className="form-control redondeado h-200"
+          placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: Albornoz)"
+          aria-label="Ingresa tu texto aqui"
+          aria-describedby="basic-addon2"
+          
+        />
+        <div className="input-group-append">
+          <button className="btn btn-primary redondeado" type="button">
             Buscar
           </button>
-        </form>
+        </div>
+      </form>
 
         <div className="card table-responsive  shadow">
           <table className="table table-hover">
@@ -44,18 +45,18 @@ export const AlumnosLista = () => {
               </tr>
             </thead>
             <tbody>
-              {alumnos.map((alumno) => (
-                <tr key={alumno.id} >
+              {alumnos.map((alumno, i) => (
+                <tr key={i}>
                   <td>
                     {alumno.nombres} {alumno.apellidos}
                   </td>
                   <td>{alumno.rut}</td>
-                  <td>{alumno.codigo}</td>
+                  <td>{alumno.carrera.codigo}</td>
                   <td>
                     <button
                       type="button"
                       onClick={() => seleccionAlumno(alumno)}
-                      className="btn btn-success"
+                      className="btn btn-secondary "
                       data-toggle="modal"
                       data-target="#exampleModalLong"
                     >
@@ -69,5 +70,7 @@ export const AlumnosLista = () => {
           </table>
         </div>
       </div>
+    ) : (
+      <p>No hay alumnos</p>
     );
 }

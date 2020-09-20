@@ -4,9 +4,9 @@ import { ContenidoFolio } from './ContenidoFolio';
 import { InputFolio } from './InputFolio';
 
 export const ModalFolio = () => {
+  const { folios, indice } = useContext(FolioContext);
+  const { id, nombres, apellidos, rut } = indice;
 
-    const { folios, indice } = useContext(FolioContext);
-    const { id, nombres, apellidos, rut, nombrecarrera, is_active } = indice;
   return (
     <div
       className="modal fade bd-example-modal-lg"
@@ -34,18 +34,21 @@ export const ModalFolio = () => {
           <div className="modal-body">
             <div className="col">
               <div className="title p-3 mb-2 bg-success text-white">
-                  <p>Rut: {rut}</p>
-                  <p>Carrera: {nombrecarrera}</p>
+                <p>Rut: {rut}</p>
               </div>
               <InputFolio />
-              {folios
-                .filter((folio) => folio.student === id)
-                .map((folioalumno) => (
-                  <ContenidoFolio
-                    key="{folio.student}"
-                    folioalumno={folioalumno}
-                  />
-                ))}
+              {folios ? (
+                Object.values(folios)
+                  .filter((foliofilter) => foliofilter.alumno.id === id)
+                  .map((folioalumno) => (
+                    <ContenidoFolio
+                      key="{folioalumno.id}"
+                      folioalumno={folioalumno}
+                    />
+                  ))
+              ) : (
+                <p>No hay folios</p>
+              )}
             </div>
           </div>
           <div className="modal-footer">

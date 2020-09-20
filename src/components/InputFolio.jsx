@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
+// import APIHandler from '../utils/APIHandler';
 
-export const InputFolio = () => {
+export const InputFolio = () => { 
 
-
-    // const leerHistoria = (e) => {
-    //     guardarHistoria(e.target.value);
-    // }
-    // console.log(historia);
-
+      const leerHistoria = (e) => {
+        // console.log(e.target.value);
+      };
     return (
-      <div className="input-group mb-3 h-200">
+      <form className="input-group mb-3 h-200">
         <textarea
           type="text"
+          name="content"
+          id="content"
+          onChange={leerHistoria}
           className="form-control redondeado h-200"
           placeholder="Ingresa tu texto aqui"
           aria-label="Ingresa tu texto aqui"
@@ -23,6 +24,6 @@ export const InputFolio = () => {
             Enviar
           </button>
         </div>
-      </div>
+      </form>
     );
 }
