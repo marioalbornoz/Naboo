@@ -1,9 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from "axios";
-import AuthHandler from '../utils/AuthHandler';
+// import AuthHandler from '../utils/AuthHandler';
 import Config from '../utils/Config';
-import { reactLocalStorage } from 'reactjs-localstorage';
-// import APIHandler from '../utils/APIHandler';
 
 //creando el context
 export const FolioContext = createContext();
