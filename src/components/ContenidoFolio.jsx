@@ -16,7 +16,7 @@ export const ContenidoFolio = ({folioalumno}) => {
           <div className="titulo">
             <div className="usuario">
               <h6 className="card-title activator grey-text text-darken-4">
-                {folioalumno.user}
+                {folioalumno.usuario}
               </h6>
             </div>
 
