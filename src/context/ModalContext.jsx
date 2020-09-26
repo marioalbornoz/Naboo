@@ -1,35 +1,43 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from "axios";
 import Config from '../utils/Config';
-import AuthHandler from '../utils/AuthHandler';
+// import AuthHandler from '../utils/AuthHandler';
 
 //creando el context
 export const ModalContext = createContext();
 
 // Provider
 const ModalProvider = (props) => {
-    const [historia, guardarHistoria] = useState("");
-    const [alumno, guardarAlumno] = useState({});
+    // const [historia, guardarHistoria] = useState("");
+    const [content, guardarContent] = useState("");
+    const [idUser, guardarIdUser] = useState(1);
 
-    const {id} = alumno;
     //ejecutar llamado a la api
     useEffect(() => {
       
-        const axiosAPI = axios.create({
-            baseURL: Config.listFolios,
-            timeout: 5000,
-            headers: {
-              Authorization: AuthHandler.getLoginToken() ? "Bearer " + AuthHandler.getLoginToken() : null,
-              "Content-Type": "application/json",
-              accept: "application/json",
-            },
+        if(content){
+          const enviarFolio = axios.post(Config.listFolios, {
+            content: content,
+            user: idUser
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
           });
-        axiosAPI();
- }, [])
+        enviarFolio();
+        }
+        else{
+          return ;
+        }
+ }, [content, idUser])
     return (
         <ModalContext.Provider
             value={{
-                guardarHistoria,
+                // guardarHistoria,
+                guardarContent,
+                guardarIdUser
             }}
             >
             {props.children}

@@ -1,5 +1,5 @@
-import React, {  useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom';
 import AuthHandler from '../utils/AuthHandler';
 import Config from '../utils/Config';
  
@@ -11,10 +11,7 @@ export const Login = () => {
     password: "",
   });
 
-
   const [loginStatus, guardarLoginStatus] = useState(0);
-
-
 
   const guardarDatos = (e) => {
     setdatos({ ...datos, [e.target.name]: e.target.value });
@@ -22,54 +19,26 @@ export const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(datos);
+    // guardarUsuario(datos.username);
     guardarLoginStatus(1);
     AuthHandler.login(datos.username, datos.password, handleAjaxResponse);
-    
   };
 
   // captura un error
   const handleAjaxResponse = (data) => {
     console.log(data.error);
     if (data.error === false) {
-      console.log('redireccionando');
+      console.log("redireccionando");
       window.location = Config.homeUrl;
     } else {
-      console.log('no redireccionando');
+      console.log("no redireccionando");
       guardarLoginStatus(4);
-      
-      
     }
   };
   // Si esta logueado no puede acceder al login
-  if(AuthHandler.loggedIn()){
-    return <Redirect to={Config.homeUrl} />
+  if (AuthHandler.loggedIn()) {
+    return <Redirect to={Config.homeUrl} />;
   }
-   
-
-
-  // const getMessages = () => {
-  //   if (loginStatus === 0) {
-  //     return "";
-  //   } else if (loginStatus === 1) {
-  //     return (
-  //       <div className="alert alert-warning">
-  //         <strong>Logging in!</strong> Please Wait...
-  //       </div>
-  //     );
-  //   } else if (loginStatus === 3) {
-  //     return (
-  //       <div className="alert alert-success">
-  //         <strong>Login Successfull!</strong>
-  //       </div>
-  //     );
-  //   } else if (loginStatus === 4) {
-  //     return (
-  //       <div className="alert alert-danger">
-  //         <strong>Invalid Login Details</strong>
-  //       </div>
-  //     );
-  //   }
-  // };
   return (
     <div className="container">
       {/* Outer Row */}
@@ -91,9 +60,7 @@ export const Login = () => {
                       <div className="alert alert-danger">
                         <strong>Invalid Login Details</strong>
                       </div>
-                    ) : (
-                      null
-                    )}
+                    ) : null}
                     <form
                       onSubmit={handleSubmit}
                       className="user"

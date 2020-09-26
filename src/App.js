@@ -13,31 +13,39 @@ import FolioProvider from './context/FolioContext';
 import { Login } from './pages/Login';
 import { PrivateRoute } from './utils/PrivateRoute';
 import { Logout } from './pages/Logout';
+import AuthProvider from './context/AuthContext';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path='/logout' component={Logout}/>
-        <AlumnosProvider>
-        <FolioProvider>
-          <Navbar />
-          <div className="container-fluid">
-            <div className="row">
-              <Sidebar />
-              <Switch>
-                <PrivateRoute exact path="/alumnos" component={Alumnos} />
-                <PrivateRoute exact path="/profesores" component={Profesores} />
-                <PrivateRoute exact path="/" component={ContenrHome} />
-              </Switch>
-            </div>
-          </div>
-        </FolioProvider>
-      </AlumnosProvider>
-      </Switch>
+    
+      <Router>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <AuthProvider>
+          <AlumnosProvider>
+            <FolioProvider>
+              <Navbar />
+              <div className="container-fluid">
+                <div className="row">
+                  <Sidebar />
+                  <Switch>
+                    <PrivateRoute exact path="/alumnos" component={Alumnos} />
+                    <PrivateRoute
+                      exact
+                      path="/profesores"
+                      component={Profesores}
+                    />
+                    <PrivateRoute exact path="/" component={ContenrHome} />
+                  </Switch>
+                </div>
+              </div>
+            </FolioProvider>
+          </AlumnosProvider>
+          </AuthProvider>
+        </Switch>
 
-      {/* <AlumnosProvider>
+        {/* <AlumnosProvider>
         <FolioProvider>
           <Navbar />
           <div className="container-fluid">
@@ -52,7 +60,7 @@ function App() {
           </div>
         </FolioProvider>
       </AlumnosProvider> */}
-    </Router>
+      </Router>
   );
 }
 
