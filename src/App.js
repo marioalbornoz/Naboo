@@ -17,12 +17,13 @@ import AuthProvider from './context/AuthContext';
 
 function App() {
   return (
-    
-      <Router>
-        <Switch>
+    <AuthProvider>
+    <Router>
+      <Switch>
+        
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
-          <AuthProvider>
+
           <AlumnosProvider>
             <FolioProvider>
               <Navbar />
@@ -42,10 +43,10 @@ function App() {
               </div>
             </FolioProvider>
           </AlumnosProvider>
-          </AuthProvider>
-        </Switch>
+        
+      </Switch>
 
-        {/* <AlumnosProvider>
+      {/* <AlumnosProvider>
         <FolioProvider>
           <Navbar />
           <div className="container-fluid">
@@ -60,7 +61,8 @@ function App() {
           </div>
         </FolioProvider>
       </AlumnosProvider> */}
-      </Router>
+    </Router>
+    </AuthProvider>
   );
 }
 

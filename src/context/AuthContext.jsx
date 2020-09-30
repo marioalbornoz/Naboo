@@ -3,24 +3,16 @@ import React, { createContext, useState } from 'react'
 export const AuthContext = createContext();
 
 const AuthProvider = (props) => {
-    const [idUser, guardarIdUser] = useState("");
-
-    const decodePayload=()=>{
-        const token = localStorage.getItem("token");
-        console.log("token: ", token);
-        if(token){
-            const payload = token.split('.')[1];
-            const cadena=JSON.parse(Buffer.from(payload, 'base64').toString('utf8'));
-            console.log(cadena.user_id);
-        } else{
-            return ;
-        }
-        
-    } 
-
-    decodePayload()
+    const [datos, setdatos] = useState({
+      username: "",
+      password: "",
+    });
+    const guardarNombre = (a) => {
+      const nombre = a;
+      return nombre;
+    }
     return (
-      <AuthContext.Provider value={{ idUser, guardarIdUser }}>
+      <AuthContext.Provider value={{ datos, setdatos, guardarNombre }}>
         {props.children}
       </AuthContext.Provider>
     );

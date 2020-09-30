@@ -1,15 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import AuthHandler from '../utils/AuthHandler';
 import Config from '../utils/Config';
  
 
 
 export const Login = () => {
-  const [datos, setdatos] = useState({
-    username: "",
-    password: "",
-  });
+  
+  const {datos, setdatos} = useContext(AuthContext);
 
   const [loginStatus, guardarLoginStatus] = useState(0);
 
