@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AlumnosContext } from '../context/AlumnosContext';
+// import { AuthContext } from '../context/AuthContext';
 import { UserContext } from '../context/UserContext';
 import Config from '../utils/Config';
 
 export const Navbar = () => {
-  const {datos} = useContext(AuthContext);
-  const {usuarios} = useContext(UserContext)
+  const { idUsuario } = useContext(AlumnosContext);
+  const {usuarios} = useContext(UserContext);
+  console.log('====================================');
+  console.log("los datos ",usuarios.data, idUsuario);
+  console.log('====================================');
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -41,17 +45,22 @@ export const Navbar = () => {
             </a>
           </li>
           <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="!#"
-              id="navbarDropdownMenuLink"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              Bienvenido
-            </a>
+            
+              {usuarios.data && idUsuario
+                ? usuarios.data
+                    .filter((user) => user.id === idUsuario)
+              .map(usuario => <a
+                className="nav-link dropdown-toggle"
+                href="!#"
+                key={idUsuario}
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              > Bienvenido {usuario.username}</a>)
+                : null}
+            
             <div
               className="dropdown-menu shadow"
               aria-labelledby="navbarDropdownMenuLink"
