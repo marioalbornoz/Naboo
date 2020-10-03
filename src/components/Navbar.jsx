@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { UserContext } from '../context/UserContext';
 import Config from '../utils/Config';
 
 export const Navbar = () => {
   const {datos} = useContext(AuthContext);
+  const {usuarios} = useContext(UserContext)
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
@@ -47,7 +50,7 @@ export const Navbar = () => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-             { datos.username ? `Hola ${datos.username}` : `Bienvenido!`}
+              Bienvenido
             </a>
             <div
               className="dropdown-menu shadow"

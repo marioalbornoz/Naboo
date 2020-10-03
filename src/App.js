@@ -14,54 +14,38 @@ import { Login } from './pages/Login';
 import { PrivateRoute } from './utils/PrivateRoute';
 import { Logout } from './pages/Logout';
 import AuthProvider from './context/AuthContext';
+import UserProvider from './context/UserContext';
 
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <Switch>
-        
+      <Router>
+        <Switch>
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
-
-          <AlumnosProvider>
-            <FolioProvider>
-              <Navbar />
-              <div className="container-fluid">
-                <div className="row">
-                  <Sidebar />
-                  <Switch>
-                    <PrivateRoute exact path="/alumnos" component={Alumnos} />
-                    <PrivateRoute
-                      exact
-                      path="/profesores"
-                      component={Profesores}
-                    />
-                    <PrivateRoute exact path="/" component={ContenrHome} />
-                  </Switch>
+          <UserProvider>
+            <AlumnosProvider>
+              <FolioProvider>
+                <Navbar />
+                <div className="container-fluid">
+                  <div className="row">
+                    <Sidebar />
+                    <Switch>
+                      <PrivateRoute exact path="/alumnos" component={Alumnos} />
+                      <PrivateRoute
+                        exact
+                        path="/profesores"
+                        component={Profesores}
+                      />
+                      <PrivateRoute exact path="/" component={ContenrHome} />
+                    </Switch>
+                  </div>
                 </div>
-              </div>
-            </FolioProvider>
-          </AlumnosProvider>
-        
-      </Switch>
-
-      {/* <AlumnosProvider>
-        <FolioProvider>
-          <Navbar />
-          <div className="container-fluid">
-            <div className="row">
-              <Sidebar />
-              <Switch>
-                <Route path="/alumnos" component={Alumnos} />
-                <Route path="/profesores" component={Profesores} />
-                <Route path="/inicio" component={ContenrHome} />
-              </Switch>
-            </div>
-          </div>
-        </FolioProvider>
-      </AlumnosProvider> */}
-    </Router>
+              </FolioProvider>
+            </AlumnosProvider>
+          </UserProvider>
+        </Switch>
+      </Router>
     </AuthProvider>
   );
 }
