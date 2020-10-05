@@ -3,6 +3,8 @@ import axios from 'axios';
 import Config from '../utils/Config';
 import { useContext } from 'react';
 import { AuthContext } from './AuthContext';
+import { Redirect } from 'react-router-dom';
+import AuthHandler from '../utils/AuthHandler';
 
 // Creando context
 export const UserContext = createContext();
@@ -26,6 +28,8 @@ const UserProvider = (props) => {
                     guardarUsuario(usuarios);
               } catch (error) {
                   console.error(error);
+                  AuthHandler.logoutUser();
+                  return <Redirect to="/logout"/>;
               }
           }
           obtenerUsuarios()
