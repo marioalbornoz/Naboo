@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import { AlumnosContext } from '../context/AlumnosContext';
 import { FolioContext } from '../context/FolioContext';
 import { ContenidoFolio } from './ContenidoFolio';
 import { InputFolio } from './InputFolio';
@@ -6,7 +7,37 @@ import { InputFolio } from './InputFolio';
 export const ModalFolio = () => {
   const { folios, indice } = useContext(FolioContext);
   const { id, nombres, apellidos, rut } = indice;
+  const [foliousuario, guardarFoliousurio] = useState({});
+  const {idUsuario} = useContext(AlumnosContext);
 
+  const traerFoliosEspecificos = (
+    idUsuario ===1 ? 
+    folios ? (
+      Object.values(folios)
+        .filter((foliofilter) => foliofilter.alumno.id === id)
+        .map((folioalumno) => (
+          <ContenidoFolio
+            key="{folioalumno.id}"
+            folioalumno={folioalumno}
+          />
+        ))
+    ) : (
+      <p>No hay folios</p>
+    )
+    :
+    folios ? (
+      Object.values(folios)
+        .filter((foliofilter) => foliofilter.alumno.id === id && foliofilter.user === idUsuario)
+        .map((folioalumno) => (
+          <ContenidoFolio
+            key="{folioalumno.id}"
+            folioalumno={folioalumno}
+          />
+        ))
+    ) : (
+      <p>No hay folios</p>
+    )
+  )
   return (
     <div
       className="modal fade bd-example-modal-lg"
@@ -37,18 +68,7 @@ export const ModalFolio = () => {
                 <p>Rut: {rut}</p>
               </div>
               <InputFolio />
-              {folios ? (
-                Object.values(folios)
-                  .filter((foliofilter) => foliofilter.alumno.id === id)
-                  .map((folioalumno) => (
-                    <ContenidoFolio
-                      key="{folioalumno.id}"
-                      folioalumno={folioalumno}
-                    />
-                  ))
-              ) : (
-                <p>No hay folios</p>
-              )}
+              {traerFoliosEspecificos}
             </div>
           </div>
           <div className="modal-footer">
