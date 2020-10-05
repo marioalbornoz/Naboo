@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
+import { useEffect } from 'react';
 import { AlumnosContext } from '../context/AlumnosContext';
+import { AuthContext } from '../context/AuthContext';
 // import { AuthContext } from '../context/AuthContext';
 import { UserContext } from '../context/UserContext';
 import Config from '../utils/Config';
 
 export const Navbar = () => {
+  const {guardarIsmounted} = useContext(AuthContext);
   const { idUsuario } = useContext(AlumnosContext);
   const {usuarios} = useContext(UserContext);
-  console.log('====================================');
-  console.log("los datos ",usuarios.data, idUsuario);
-  console.log('====================================');
-
+  useEffect(()=>{
+    guardarIsmounted(true)
+  }, [guardarIsmounted])
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">

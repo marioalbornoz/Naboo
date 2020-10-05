@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
-import { RellenoPaginas } from '../components/RellenoPaginas'
 import { UserContext } from '../context/UserContext'
 
 export const Profesores = () => {
 
     const { usuarios } = useContext(UserContext);
-    console.log(usuarios);
+    console.log(usuarios.data);
     return (
       <div className="row m-4">
         <div className="col">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { reactLocalStorage } from "reactjs-localstorage";
+// import { reactLocalStorage } from "reactjs-localstorage";
 import AuthHandler from "./AuthHandler";
 import Config from "./Config";
 
@@ -12,7 +12,7 @@ class APIHandler {
            refresh: AuthHandler.getRefreshToken(),
          });
 
-         reactLocalStorage.set("token", response.data.access);
+         localStorage.setItem("token", response.data.access);
        } catch (error) {
          console.log(error);
 

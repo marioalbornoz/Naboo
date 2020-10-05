@@ -35,7 +35,7 @@ class AuthHandler {
   }
 
   static getRefreshToken() {
-    return reactLocalStorage.get("refresh");
+    return localStorage.getItem("refresh");
   }
 
   static logoutUser() {
@@ -45,7 +45,7 @@ class AuthHandler {
 
   static checkTokenExpiry() {
     var expire = false;
-    var token = this.getLoginToken();
+    var token = localStorage.getItem("token");
     var tokenArray = token.split(".");
     var jwt = JSON.parse(atob(tokenArray[1]));
     if (jwt && jwt.exp && Number.isFinite(jwt.exp)) {

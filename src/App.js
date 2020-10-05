@@ -23,8 +23,9 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
-          <UserProvider>
-            <AlumnosProvider>
+
+          <AlumnosProvider>
+            <UserProvider>
               <FolioProvider>
                 <Navbar />
                 <div className="container-fluid">
@@ -42,8 +43,8 @@ function App() {
                   </div>
                 </div>
               </FolioProvider>
-            </AlumnosProvider>
-          </UserProvider>
+            </UserProvider>
+          </AlumnosProvider>
         </Switch>
       </Router>
     </AuthProvider>

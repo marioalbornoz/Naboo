@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AuthHandler from '../utils/AuthHandler';
@@ -8,7 +9,11 @@ import Config from '../utils/Config';
 
 export const Login = () => {
   
-  const {datos, setdatos} = useContext(AuthContext);
+  const {datos, setdatos, guardarIsmounted} = useContext(AuthContext);
+
+  useEffect(() => {
+    guardarIsmounted(false);
+  }, [guardarIsmounted])
 
   const [loginStatus, guardarLoginStatus] = useState(0);
 
@@ -25,7 +30,6 @@ export const Login = () => {
 
   // captura un error
   const handleAjaxResponse = (data) => {
-    console.log(data.error);
     if (data.error === false) {
       console.log("redireccionando");
       window.location = Config.homeUrl;
