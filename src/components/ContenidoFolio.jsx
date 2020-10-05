@@ -1,5 +1,6 @@
 import React from 'react'
 import "./styles.css";
+import perfil from "../perfil.png"
 
 export const ContenidoFolio = ({folioalumno}) => {
     
@@ -8,7 +9,7 @@ export const ContenidoFolio = ({folioalumno}) => {
         <div className="picture">
           <img
             className="imagen"
-            src="https://folioestudiantil.herokuapp.com/static/base/img/perfil.png"
+            src={perfil}
             alt={`foto de ${folioalumno.alumno}`}
           />
         </div>
