@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AlumnosContext } from "../context/AlumnosContext";
 import { FolioContext } from "../context/FolioContext";
 import { ContenidoFolio } from "./ContenidoFolio";

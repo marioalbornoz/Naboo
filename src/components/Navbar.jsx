@@ -5,19 +5,18 @@ import { AuthContext } from '../context/AuthContext';
 // import { AuthContext } from '../context/AuthContext';
 import { UserContext } from '../context/UserContext';
 import Config from '../utils/Config';
+import Avatar from "../avatarHombre.png";
+import logo from '../logo.png'
 
 export const Navbar = () => {
-  const {guardarIsmounted} = useContext(AuthContext);
+  const { guardarIsmounted } = useContext(AuthContext);
   const { idUsuario } = useContext(AlumnosContext);
-  const {usuarios} = useContext(UserContext);
-  useEffect(()=>{
-    guardarIsmounted(true)
-  }, [guardarIsmounted])
+  const { usuarios } = useContext(UserContext);
+  useEffect(() => {
+    guardarIsmounted(true);
+  }, [guardarIsmounted]);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
-        FolioE UTEM
-      </a>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light alineado">
       <button
         className="navbar-toggler"
         type="button"
@@ -29,6 +28,10 @@ export const Navbar = () => {
       >
         <span className="navbar-toggler-icon" />
       </button>
+      <a className="navbar-brand" href="/">
+        <img src={logo} className="logo" alt="" />
+      </a>
+
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav ml-md-auto">
           <li className="nav-item active">
@@ -47,11 +50,32 @@ export const Navbar = () => {
             </a>
           </li>
           <li className="nav-item dropdown">
-            
-              {usuarios.data && idUsuario
-                ? usuarios.data
-                    .filter((user) => user.id === idUsuario)
-              .map(usuario => <a
+            {usuarios.data && idUsuario ? (
+              usuarios.data
+                .filter((user) => user.id === idUsuario)
+                .map((usuario) => (
+                  <a
+                    className="nav-link dropdown-toggle text-capitalize"
+                    href="!#"
+                    key={idUsuario}
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {" "}
+                    {usuario.username}{" "}
+                    <img
+                      className="rounded-circle"
+                      src={Avatar}
+                      alt="perfil"
+                      style={{ height: 30 }}
+                    />
+                  </a>
+                ))
+            ) : (
+              <a
                 className="nav-link dropdown-toggle"
                 href="!#"
                 key={idUsuario}
@@ -60,17 +84,11 @@ export const Navbar = () => {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              > Bienvenido {usuario.username}</a>)
-                : <a
-                className="nav-link dropdown-toggle"
-                href="!#"
-                key={idUsuario}
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">Tiempo de conexion agotado</a>}
-            
+              >
+                Tiempo de conexion agotado
+              </a>
+            )}
+
             <div
               className="dropdown-menu shadow"
               aria-labelledby="navbarDropdownMenuLink"
@@ -90,4 +108,4 @@ export const Navbar = () => {
       </div>
     </nav>
   );
-}
+};

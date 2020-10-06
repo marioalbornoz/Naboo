@@ -10,19 +10,18 @@ export const Profesores = () => {
     return (
       <Fragment>
         <div className="row ml-4 mt-4 fila">
-          <div className="ml-4 col-lg-10 col-md-9">
+          <div className="ml-4 col-lg-10 col-md-6">
             <h3 className="font-weight-bold">Usuarios registrados</h3>
           </div>
           {usuarios.data ? (
             usuarios.data.map((user) => (
-              <div
-                className="card text-white m-2 usuarios shadow"
-                key={user.id}
-              >
-                <div className="card-header">Header</div>
-                <div className="card-body cuerpo">
-                  <img src={imagen} alt="hola"/>
-                  <h6 className="card-title pl-2">{user.username}</h6>
+              <div className="col-lg-3 col-md-6 col-sm-10" key={user.id}>
+                <div className="card text-white usuarios shadow">
+                  <div className="card-header">Header</div>
+                  <div className="card-body cuerpo">
+                    <img src={imagen} alt="hola" />
+                    <h6 className="card-title pl-2">{user.username}</h6>
+                  </div>
                 </div>
               </div>
               // <div className="card gradient-card m-2" key={user.id}>

@@ -1,10 +1,55 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AlumnosContext } from '../context/AlumnosContext';
+import { UserContext } from '../context/UserContext';
+import Avatar from "../avatarHombre.png";
 
 export const Sidebar = () => {
+
+  const { idUsuario } = useContext(AlumnosContext);
+  const { usuarios } = useContext(UserContext);
     return (
-        <nav id="sidebarMenu" className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav
+        id="sidebarMenu"
+        className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+      >
         <div className="sidebar-sticky pt-3">
           <ul className="nav flex-column">
+            <li className="nav-item usuarioSidebar">
+              {usuarios.data && idUsuario ? (
+                usuarios.data
+                  .filter((user) => user.id === idUsuario)
+                  .map((usuario) => (
+                    <a
+                      className="nav-link text-capitalize"
+                      href="!#"
+                      key={idUsuario}
+                    >
+                      <img
+                        className="rounded-circle logo mb-1"
+                        src={Avatar}
+                        alt="perfil"
+                        style={{ height: 30 }}
+                      />
+                      {" "}
+                      {usuario.username}{" "}
+                      
+                    </a>
+                  ))
+              ) : (
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="!#"
+                  key={idUsuario}
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Tiempo de conexion agotado
+                </a>
+              )}
+            </li>
             <li className="nav-item">
               <a className="nav-link text-secondary" href="/">
                 <i className="fas fa-home mr-2" />
@@ -34,11 +79,7 @@ export const Sidebar = () => {
               </a>
             </li>
           </ul>
-          <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>Saved reports</span>
-            <a className="d-flex align-items-center text-muted text-secondary" href="!#" aria-label="Add a new report">
-            </a>
-          </h6>
+          
           <ul className="nav flex-column mb-2">
             <li className="nav-item">
               <a className="nav-link text-secondary" href="!#">

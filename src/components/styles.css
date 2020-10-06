@@ -1,3 +1,7 @@
+.usuarioSidebar{
+    display: none;
+    
+}
 .tarjeta {
     display: flex;
     align-items: stretch;
@@ -47,6 +51,38 @@
     display: flex;
     align-items: center;
 }
+.usuarios{
+    height: 35%;
+    width: 85%;
+    background-color: #343a40!important;
+    border-radius: 15px;
+    
+}
+.tituloPrincipal{
+    padding-bottom: 10px!important;
+}
+.fila{
+    width: 80%;
+}
+
+h6{
+    text-transform: capitalize;
+}
+img{
+    height: 50px;
+    border: none;
+    border-radius: 32px;
+}
+.cuerpo {
+    display: flex;
+    align-items: center;
+
+}
+
+.bg-login-image{
+    background-image: url('../RedesSociales_00.png');
+    background-size: cover;
+}
 
 /* @media screen and (min_width:691px) and (max_width:1090px){
     
@@ -73,9 +109,52 @@
         max-width: 100%;
         padding-left: 1rem;
     }
+    .navbar-toggler{
+        display: none;
+    }
+    .usuarioSidebar{
+        display: flex;
+        text-align: center;
+        padding-bottom: 1rem;
+        
+    }
+    .usuarioSidebar .logo{
+        height: 70px!important;
+    }
+    .usuarioSidebar .nav-link{
+        color: #343a40 !important;
+    }
     .imagen{
         height: 60px;
     }
+    .usuarios{
+        height: 80%;
+        width: 100%;
+        background-color: #343a40!important;
+        
+    }
+    .tituloPrincipal{
+        padding-bottom: 10px!important;
+    }
+    .fila{
+        width: 60%;
+    }
+    
+    h6{
+        text-transform: capitalize;
+    }
+    img{
+        height: 50px;
+        border: none;
+        border-radius: 32px;
+    }
+    .cuerpo {
+        display: flex;
+        align-items: center;
+    
+    }
+    
+    
 }
 
 @media screen and (max-width: 600px) and (min-width: 382px){
@@ -118,5 +197,46 @@
     .imagen{
         height: 50px;
         margin-top: 30px;
+    }
+    .alineado{
+        display: flex;
+    }
+    .logo{
+        height: 40px;
+        padding-right: 40px;
+    }
+    .usuarios{
+        height: 95%;
+        width: 85%;
+        background-color: #343a40!important;
+        
+    }
+    .tituloPrincipal{
+        padding-bottom: 10px!important;
+    }
+    .fila{
+        width: 80%;
+    }
+    
+    h6{
+        text-transform: capitalize;
+    }
+    img{
+        height: 50px;
+        border: none;
+        border-radius: 32px;
+    }
+    .cuerpo {
+        display: flex;
+        align-items: center;
+    
+    }
+    
+    .bg-login-image{
+        background-image: url('../RedesSociales_00.png');
+        background-size: cover;
+    }
+    .rut{
+        display: none;
     }
 }

@@ -34,12 +34,12 @@ export const AlumnosLista = () => {
         </div>
       </form>
 
-        <div className="card table-responsive  shadow">
+        <div className="card table-responsive redondeado shadow">
           <table className="table table-hover">
             <thead className="thead-dark">
               <tr>
                 <th>Alumno</th>
-                <th>Rut</th>
+                <th className="rut">Rut</th>
                 <th>Carrera</th>
                 <th>Accion</th>
               </tr>
@@ -50,7 +50,7 @@ export const AlumnosLista = () => {
                   <td>
                     {alumno.nombres} {alumno.apellidos}
                   </td>
-                  <td>{alumno.rut}</td>
+                  <td className="rut">{alumno.rut}</td>
                   <td>{alumno.carrera.codigo}</td>
                   <td>
                     <button
