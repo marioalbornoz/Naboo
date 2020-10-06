@@ -61,7 +61,15 @@ export const Navbar = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               > Bienvenido {usuario.username}</a>)
-                : null}
+                : <a
+                className="nav-link dropdown-toggle"
+                href="!#"
+                key={idUsuario}
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">Tiempo de conexion agotado</a>}
             
             <div
               className="dropdown-menu shadow"

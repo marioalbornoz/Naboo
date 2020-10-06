@@ -1,0 +1,26 @@
+.usuarios{
+    height: 30%;
+    width: 25%;
+    background-color: #343a40!important;
+    
+}
+.tituloPrincipal{
+    padding-bottom: 10px!important;
+}
+.fila{
+    width: 80%;
+}
+
+h6{
+    text-transform: capitalize;
+}
+img{
+    height: 50px;
+    border: none;
+    border-radius: 32px;
+}
+.cuerpo {
+    display: flex;
+    align-items: center;
+
+}

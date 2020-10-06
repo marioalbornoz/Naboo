@@ -1,43 +1,39 @@
-import React, { useContext, useState } from 'react'
-import { AlumnosContext } from '../context/AlumnosContext';
-import { FolioContext } from '../context/FolioContext';
-import { ContenidoFolio } from './ContenidoFolio';
-import { InputFolio } from './InputFolio';
+import React, { useContext, useState } from "react";
+import { AlumnosContext } from "../context/AlumnosContext";
+import { FolioContext } from "../context/FolioContext";
+import { ContenidoFolio } from "./ContenidoFolio";
+import { InputFolio } from "./InputFolio";
+import perfilStudent from "../perfilStudent.png";
 
 export const ModalFolio = () => {
   const { folios, indice } = useContext(FolioContext);
-  const { id, nombres, apellidos, rut } = indice;
-  const [foliousuario, guardarFoliousurio] = useState({});
-  const {idUsuario} = useContext(AlumnosContext);
+  const { id, nombres, apellidos, rut, carrera } = indice;
+  const { idUsuario } = useContext(AlumnosContext);
 
-  const traerFoliosEspecificos = (
-    idUsuario ===1 ? 
-    folios ? (
+  console.log(carrera);
+  const traerFoliosEspecificos =
+    idUsuario === 1 ? (
+      folios ? (
+        Object.values(folios)
+          .filter((foliofilter) => foliofilter.alumno.id === id)
+          .map((folioalumno) => (
+            <ContenidoFolio key="{folioalumno.id}" folioalumno={folioalumno} />
+          ))
+      ) : (
+        <p>No hay folios</p>
+      )
+    ) : folios ? (
       Object.values(folios)
-        .filter((foliofilter) => foliofilter.alumno.id === id)
+        .filter(
+          (foliofilter) =>
+            foliofilter.alumno.id === id && foliofilter.user === idUsuario
+        )
         .map((folioalumno) => (
-          <ContenidoFolio
-            key="{folioalumno.id}"
-            folioalumno={folioalumno}
-          />
+          <ContenidoFolio key="{folioalumno.id}" folioalumno={folioalumno} />
         ))
     ) : (
       <p>No hay folios</p>
-    )
-    :
-    folios ? (
-      Object.values(folios)
-        .filter((foliofilter) => foliofilter.alumno.id === id && foliofilter.user === idUsuario)
-        .map((folioalumno) => (
-          <ContenidoFolio
-            key="{folioalumno.id}"
-            folioalumno={folioalumno}
-          />
-        ))
-    ) : (
-      <p>No hay folios</p>
-    )
-  )
+    );
   return (
     <div
       className="modal fade bd-example-modal-lg"
@@ -64,8 +60,17 @@ export const ModalFolio = () => {
           </div>
           <div className="modal-body">
             <div className="col">
-              <div className="title p-3 mb-2 bg-success text-white">
-                <p>Rut: {rut}</p>
+              <div className="title p-3 mb-2 bg-success text-white presentacionAlumno">
+                <img
+                  src={perfilStudent}
+                  className="rounded-circle pr-3"
+                  alt="hola"
+                  height="80"
+                />
+                <div className="datos">
+                  {carrera ? <p>{carrera.nombre}</p> : null}
+                  <p>Rut: {rut}</p>
+                </div>
               </div>
               <InputFolio />
               {traerFoliosEspecificos}
