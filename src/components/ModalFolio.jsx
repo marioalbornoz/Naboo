@@ -10,14 +10,14 @@ export const ModalFolio = () => {
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
 
-  console.log(carrera);
+  // console.log(carrera);
   const traerFoliosEspecificos =
     idUsuario === 1 ? (
       folios ? (
         Object.values(folios)
           .filter((foliofilter) => foliofilter.alumno.id === id)
-          .map((folioalumno) => (
-            <ContenidoFolio key="{folioalumno.id}" folioalumno={folioalumno} />
+          .map((folioalumno, i) => (
+            <ContenidoFolio key={i} folioalumno={folioalumno} />
           ))
       ) : (
         <p>No hay folios</p>
@@ -28,8 +28,8 @@ export const ModalFolio = () => {
           (foliofilter) =>
             foliofilter.alumno.id === id && foliofilter.user === idUsuario
         )
-        .map((folioalumno) => (
-          <ContenidoFolio key="{folioalumno.id}" folioalumno={folioalumno} />
+        .map((folioalumno,i) => (
+          <ContenidoFolio key={i} folioalumno={folioalumno} />
         ))
     ) : (
       <p>No hay folios</p>

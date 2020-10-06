@@ -26,7 +26,7 @@ const ModalProvider = (props) => {
               console.log(response);
             })
             .catch(function (error) {
-              console.log(error);
+              console.error(error);
             });
           enviarFolio();
           }

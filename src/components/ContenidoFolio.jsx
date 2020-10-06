@@ -15,7 +15,7 @@ export const ContenidoFolio = ({folioalumno}) => {
   ]
   }
     return (
-      <div key={folioalumno.id} className="tarjeta shadow mb-3">
+      <div className="tarjeta shadow mb-3">
         <div className="picture">
           <img
             className="imagen"

@@ -16,7 +16,7 @@ export const InputFolio = () => {
   // }, []);
     const enviarFormulario = async (e) =>{
       e.preventDefault();
-      console.log(formulario, indice.id, idUsuario);
+      // console.log(formulario, indice.id, idUsuario);
       const res = await fetch(Config.listFolios, {
         method: "POST",
         headers: {

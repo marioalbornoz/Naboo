@@ -6,7 +6,7 @@ import imagen from "../avatarHombre.png"
 export const Profesores = () => {
 
     const { usuarios } = useContext(UserContext);
-    console.log(usuarios.data);
+    // console.log(usuarios.data);
     return (
       <Fragment>
         <div className="row ml-4 mt-4 fila">
