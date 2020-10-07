@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import AuthHandler from '../utils/AuthHandler';
 import Config from '../utils/Config';
- 
+import logo from '../logo.png'
 
 
 export const Login = () => {
@@ -47,17 +47,18 @@ export const Login = () => {
       {/* Outer Row */}
       <div className="row justify-content-center">
         <div className="col-xl-10 col-lg-12 col-md-9">
-          <div className="card o-hidden border-0 shadow-lg my-5">
+          <div className="card o-hidden border-0 shadow-lg my-5 login">
             <div className="card-body p-0">
               {/* Nested Row within Card Body */}
               <div className="row">
-                <div className="col-lg-6 d-none d-lg-block bg-login-image" />
+                <div className="col-lg-6 d-none d-lg-block bg-login-image " />
                 <div className="col-lg-6">
                   <div className="p-5">
                     <div className="text-center">
                       <h1 className="h4 text-gray-900 mb-4">
                         Bienvenido a Folio Estudiantil
                       </h1>
+                      <img src={logo} className="logo mb-5" alt=""/>
                     </div>
                     {loginStatus === 4 ? (
                       <div className="alert alert-danger">

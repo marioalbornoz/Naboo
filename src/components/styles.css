@@ -1,3 +1,11 @@
+.login{
+    border-radius: 15px;
+}
+.bg-login-image{
+    background-image: url('../RedesSociales_00.png');
+    background-size: cover;
+    border-radius: 15px 0px 0 15px;
+}
 .usuarioSidebar{
     display: none;
     
@@ -79,10 +87,7 @@ img{
 
 }
 
-.bg-login-image{
-    background-image: url('../RedesSociales_00.png');
-    background-size: cover;
-}
+
 
 /* @media screen and (min_width:691px) and (max_width:1090px){
     
