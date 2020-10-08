@@ -6,6 +6,15 @@ import imagen from "../avatarHombre.png"
 export const Profesores = () => {
 
     const { usuarios } = useContext(UserContext);
+
+    const grupoUsuario = (g) => {
+      if(g == 1) {
+        return `SuperAdministrador`
+      }
+      if(g==2) return `Administrador`
+      if(g==3) return `Profesor`
+      if(g==4) return `Asistente`
+    }
     // console.log(usuarios.data);
     return (
       <Fragment>
@@ -17,20 +26,13 @@ export const Profesores = () => {
             usuarios.data.map((user) => (
               <div className="col-lg-3 col-md-6 col-sm-10" key={user.id}>
                 <div className="card text-white usuarios shadow">
-                  <div className="card-header">Header</div>
+                  <div className="card-header">{grupoUsuario(user.groups)}</div>
                   <div className="card-body cuerpo">
                     <img src={imagen} alt="hola" />
                     <h6 className="card-title pl-2">{user.username}</h6>
                   </div>
                 </div>
               </div>
-              // <div className="card gradient-card m-2" key={user.id}>
-              //   <div class=" d-flex">
-              //     <div class="first-content align-self-center p-3">
-              //       <h6 class="card-title">{user.username}</h6>
-              //     </div>
-              //   </div>
-              // </div>
             ))
           ) : (
             <p>No existe usuarios</p>
