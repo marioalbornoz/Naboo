@@ -8,7 +8,6 @@ import { ModalFolio } from './ModalFolio';
 export const AlumnosLista = () => {
   const {alumnos} = useContext(AlumnosContext)
   const {setindice} = useContext(FolioContext)
-  // const [indice, guardarIndice] = useState("")
 
   const seleccionAlumno = (id) => {
     setindice(id);

@@ -9,7 +9,12 @@ import logo from '../logo.png'
 
 export const Login = () => {
   
-  const {datos, setdatos, guardarIsmounted} = useContext(AuthContext);
+  const {guardarIsmounted} = useContext(AuthContext);
+
+  const [datos, setdatos] = useState({
+    username: "",
+    password: "",
+  });
 
   useEffect(() => {
     guardarIsmounted(false);

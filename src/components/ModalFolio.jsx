@@ -4,15 +4,24 @@ import { FolioContext } from "../context/FolioContext";
 import { ContenidoFolio } from "./ContenidoFolio";
 import { InputFolio } from "./InputFolio";
 import perfilStudent from "../perfilStudent.png";
+import { PerfilContext } from "../context/PerfilContext";
 
 export const ModalFolio = () => {
   const { folios, indice } = useContext(FolioContext);
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
-
-  // console.log(carrera);
-  const traerFoliosEspecificos =
-    idUsuario === 1 ? (
+  const {perfil} = useContext(PerfilContext);
+  
+  const {groups} = perfil;
+  
+  const idPerfil = (
+    groups ? groups.map(perfil => (
+      perfil.id)
+     ) : null
+  )
+  
+  const traerFoliosEspecificos = 
+    parseInt(idPerfil) === 0 || parseInt(idPerfil)===1 ? (
       folios ? (
         Object.values(folios)
           .filter((foliofilter) => foliofilter.alumno.id === id)
@@ -33,7 +42,7 @@ export const ModalFolio = () => {
         ))
     ) : (
       <p>No hay folios</p>
-    );
+    )
   return (
     <div
       className="modal fade bd-example-modal-lg"

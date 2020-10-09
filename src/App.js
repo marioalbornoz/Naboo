@@ -15,6 +15,7 @@ import { PrivateRoute } from './utils/PrivateRoute';
 import { Logout } from './pages/Logout';
 import AuthProvider from './context/AuthContext';
 import UserProvider from './context/UserContext';
+import PerfilProvider from './context/PerfilContext';
 
 function App() {
   return (
@@ -25,25 +26,31 @@ function App() {
           <Route path="/logout" component={Logout} />
 
           <AlumnosProvider>
-            <UserProvider>
-              <FolioProvider>
-                <Navbar />
-                <div className="container-fluid">
-                  <div className="row">
-                    <Sidebar />
-                    <Switch>
-                      <PrivateRoute exact path="/alumnos" component={Alumnos} />
-                      <PrivateRoute
-                        exact
-                        path="/profesores"
-                        component={Profesores}
-                      />
-                      <PrivateRoute exact path="/" component={ContenrHome} />
-                    </Switch>
+            <PerfilProvider>
+              <UserProvider>
+                <FolioProvider>
+                  <Navbar />
+                  <div className="container-fluid">
+                    <div className="row">
+                      <Sidebar />
+                      <Switch>
+                        <PrivateRoute
+                          exact
+                          path="/alumnos"
+                          component={Alumnos}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/profesores"
+                          component={Profesores}
+                        />
+                        <PrivateRoute exact path="/" component={ContenrHome} />
+                      </Switch>
+                    </div>
                   </div>
-                </div>
-              </FolioProvider>
-            </UserProvider>
+                </FolioProvider>
+              </UserProvider>
+            </PerfilProvider>
           </AlumnosProvider>
         </Switch>
       </Router>
