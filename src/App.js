@@ -16,6 +16,8 @@ import { Logout } from './pages/Logout';
 import AuthProvider from './context/AuthContext';
 import UserProvider from './context/UserContext';
 import PerfilProvider from './context/PerfilContext';
+import { Perfil } from './pages/Perfil';
+
 
 function App() {
   return (
@@ -43,6 +45,11 @@ function App() {
                           exact
                           path="/profesores"
                           component={Profesores}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/perfil/:id"
+                          component={Perfil}
                         />
                         <PrivateRoute exact path="/" component={ContenrHome} />
                       </Switch>

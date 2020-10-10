@@ -5,10 +5,8 @@ import { useState } from 'react';
 import { createContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthHandler from '../utils/AuthHandler';
-// import Config from '../utils/Config';
 import { AlumnosContext } from './AlumnosContext';
 import { AuthContext } from './AuthContext';
-// import { ModalContext } from './ModalContext';
 
 export const PerfilContext = createContext();
 

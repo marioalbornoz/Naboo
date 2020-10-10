@@ -2,16 +2,16 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { AlumnosContext } from '../context/AlumnosContext';
 import { AuthContext } from '../context/AuthContext';
-// import { AuthContext } from '../context/AuthContext';
-import { UserContext } from '../context/UserContext';
 import Config from '../utils/Config';
 import Avatar from "../avatarHombre.png";
-import logo from '../logo.png'
+import logo from '../logo.png';
+import { PerfilContext } from '../context/PerfilContext';
 
 export const Navbar = () => {
   const { guardarIsmounted } = useContext(AuthContext);
   const { idUsuario } = useContext(AlumnosContext);
-  const { usuarios } = useContext(UserContext);
+  const {perfil} = useContext(PerfilContext)
+  const {username, id} = perfil;
   useEffect(() => {
     guardarIsmounted(true);
   }, [guardarIsmounted]);
@@ -50,44 +50,25 @@ export const Navbar = () => {
             </a>
           </li>
           <li className="nav-item dropdown">
-            {usuarios.data && idUsuario ? (
-              usuarios.data
-                .filter((user) => user.id === idUsuario)
-                .map((usuario) => (
-                  <a
-                    className="nav-link dropdown-toggle text-capitalize"
-                    href="!#"
-                    key={idUsuario}
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    {" "}
-                    {usuario.username}{" "}
-                    <img
-                      className="rounded-circle"
-                      src={Avatar}
-                      alt="perfil"
-                      style={{ height: 30 }}
-                    />
-                  </a>
-                ))
-            ) : (
-              <a
-                className="nav-link dropdown-toggle"
-                href="!#"
-                key={idUsuario}
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Tiempo de conexion agotado
-              </a>
-            )}
+            <a
+              className="nav-link dropdown-toggle text-capitalize"
+              href="!#"
+              key={idUsuario}
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              {" "}
+              {username}{" "}
+              <img
+                className="rounded-circle"
+                src={Avatar}
+                alt="perfil"
+                style={{ height: 30 }}
+              />
+            </a>
 
             <div
               className="dropdown-menu shadow"
@@ -96,7 +77,7 @@ export const Navbar = () => {
               <a className="dropdown-item" href="!#">
                 Acerca
               </a>
-              <a className="dropdown-item" href="!#">
+              <a className="dropdown-item" href={`/perfil/${id}`}>
                 Perfil
               </a>
               <a className="dropdown-item" href={Config.logoutPageUrl}>
