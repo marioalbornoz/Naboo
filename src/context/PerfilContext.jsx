@@ -14,7 +14,6 @@ const PerfilProvider = (props) => {
     const {ismounted} = useContext(AuthContext);
     const {idUsuario} = useContext(AlumnosContext);
     const [perfil, guardarPerfil] = useState({});
-    // console.log(idUsuario, `${Config.listaUsuarios}${idUsuario}`);
     useEffect(()=>{
             if(ismounted && idUsuario){
               const obtenerPerfil = async () => {
