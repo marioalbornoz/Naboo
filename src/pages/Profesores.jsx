@@ -8,15 +8,14 @@ export const Profesores = () => {
     const { usuarios } = useContext(UserContext);
     
     return (
-      <Fragment>
-        <div className="row ml-4 mt-4 fila">
-          <div className="ml-4 col-lg-10 col-md-6 col-sm-12">
-            <h3 className="font-weight-bold">Usuarios registrados</h3>
+      <div className="col-lg-9 col-md-9 col-sm-12 ">
+          <div className="title m-5">
+            <h4 className="lead">Usuarios Registrados</h4>
           </div>
+          <div className="row">
           {usuarios.data ? (
             usuarios.data.map((user) => (
-              <div className="col-lg-3 col-md-6 col-sm-10" key={user.id}>
-                <div className="card text-white usuarios shadow">
+                <div className="card text-white usuarios shadow col-lg-3 col-md-5 col-sm-12" key={user.id}>
                   <div className="card-header">{ (user)? (user.groups).map(grupo => (
                     grupo.name
                   )) : console.log(user)}</div>
@@ -25,12 +24,11 @@ export const Profesores = () => {
                     <h6 className="card-title pl-2">{user.username}</h6>
                   </div>
                 </div>
-              </div>
             ))
           ) : (
-            <p>No existe usuarios</p>
+            <p>Cargando usuarios</p>
           )}
-        </div>
-      </Fragment>
+          </div>
+      </div>
     );
 }
