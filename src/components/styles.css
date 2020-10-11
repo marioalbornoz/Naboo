@@ -78,6 +78,7 @@
 }
 .fila{
     width: 80%;
+    max-height: 28rem;
 }
 
 h6{

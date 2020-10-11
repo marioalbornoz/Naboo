@@ -36,7 +36,7 @@ const ModalProvider = (props) => {
         } catch (error) {
           console.error(error);
           if(error.status===401){
-            return <Redirect to="/logout" />
+            window.location = Config.logoutPageUrl;
           }
         }
  }, [content, idUser])

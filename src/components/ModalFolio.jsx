@@ -3,7 +3,7 @@ import { AlumnosContext } from "../context/AlumnosContext";
 import { FolioContext } from "../context/FolioContext";
 import { ContenidoFolio } from "./ContenidoFolio";
 import { InputFolio } from "./InputFolio";
-import perfilStudent from "../perfilStudent.png";
+import perfilStudent from "../student.png";
 import { PerfilContext } from "../context/PerfilContext";
 
 export const ModalFolio = () => {

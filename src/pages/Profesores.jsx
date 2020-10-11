@@ -10,7 +10,7 @@ export const Profesores = () => {
     return (
       <Fragment>
         <div className="row ml-4 mt-4 fila">
-          <div className="ml-4 col-lg-10 col-md-6">
+          <div className="ml-4 col-lg-10 col-md-6 col-sm-12">
             <h3 className="font-weight-bold">Usuarios registrados</h3>
           </div>
           {usuarios.data ? (

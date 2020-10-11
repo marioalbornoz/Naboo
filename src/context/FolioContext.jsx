@@ -29,7 +29,7 @@ const FolioProvider = (props) => {
           console.error(error);
           if(error.status!==401) {
             AuthHandler.logoutUser();
-            return;
+            window.location = Config.logoutPageUrl;
           }
         }
       };
