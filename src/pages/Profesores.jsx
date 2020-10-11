@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react'
+import React, {  useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import "./style.css";
 import imagen from "../perfil-clase.png";

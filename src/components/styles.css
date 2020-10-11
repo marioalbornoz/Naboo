@@ -70,7 +70,7 @@
     margin: 3px 0px 35px 80px;
     height: 5.1rem ;
     width: 85% !important;
-    background-color: #343a40!important;
+    background-color: #1c61a7!important;
     border-radius: 15px;
     
 }
@@ -104,9 +104,30 @@ h6{
     border-style: double;
     border-color: #ffffff;
 }
-
+.codigocarrera {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.codigocarrera .card-title{
+    display: flex;
+    align-self: center;
+}
+.codigocarrera .card-text{
+    display: flex;
+    align-self:center;
+}
+.card-carrera .card-img-top{
+    background-size: auto;
+}
+.card-carrera{
+    padding: 0 0 0 0;
+}
 .footer{
-    background-color: #343a40;
+    background-color: #1c61a7;
     color: #ffffff;
     font-size: 14px;
     padding: 1rem;
@@ -190,7 +211,28 @@ h6{
         align-items: center;
     
     }
-    
+    .codigocarrera {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 0 !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .codigocarrera .card-title{
+        display: flex;
+        align-self: center;
+    }
+    .codigocarrera .card-text{
+        display: flex;
+        align-self:center;
+    }
+    .card-carrera .card-img-top{
+        display: none;
+    }
+    .card-carrera{
+        padding: 0 0 0 0;
+    }
     
 }
 
@@ -221,6 +263,9 @@ h6{
         background-color: #1c61a7!important;
         border-radius: 15px;
         
+    }
+    .card-carrera .card-img-top{
+        display: none;
     }
 }
 @media screen and (max-width:381px) and (min-width: 200px){
@@ -279,7 +324,9 @@ h6{
         align-items: center;
     
     }
-    
+    .card-carrera .card-img-top{
+        display: none;
+    }
     .bg-login-image{
         background-image: url('../RedesSociales_00.png');
         background-size: cover;
