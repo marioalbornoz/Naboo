@@ -13,7 +13,7 @@ export const AlumnosLista = () => {
     setindice(id);
   }
     return alumnos ? (
-      <div className="col col-12 ">
+      <div className="col col-12">
         <form className="input-group mb-3 h-200">
         <input
           type="text"

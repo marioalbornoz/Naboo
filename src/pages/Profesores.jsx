@@ -1,26 +1,12 @@
 import React, { Fragment, useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import "./style.css";
-import imagen from "../avatarHombre.png";
+import imagen from "../perfil-clase.png";
 
 export const Profesores = () => {
 
     const { usuarios } = useContext(UserContext);
     
-    // const grupoUsuario = (g) => {
-    //   if(g){
-    //     if(g === 1) {
-    //       return `SuperAdministrador`
-    //     }
-    //     if(g===2) return `Jefe Carrera`
-    //     if(g===3) return `Profesor`
-    //     if(g===4) return `Asistente`
-    //   }
-    //   else {
-    //     return `cargo`
-    //   }
-    //   }
-    // console.log(usuarios.data);
     return (
       <Fragment>
         <div className="row ml-4 mt-4 fila">
@@ -35,7 +21,7 @@ export const Profesores = () => {
                     grupo.name
                   )) : console.log(user)}</div>
                   <div className="card-body cuerpo">
-                    <img src={imagen} alt="hola" />
+                    <img src={imagen} alt="hola" className="img-card" />
                     <h6 className="card-title pl-2">{user.username}</h6>
                   </div>
                 </div>

@@ -1,3 +1,4 @@
+
 .login{
     border-radius: 15px;
 }
@@ -9,6 +10,11 @@
 .usuarioSidebar{
     display: none;
     
+}
+.logo{
+    height: 50px;
+    border: none;
+    border-radius: 32px;
 }
 .tarjeta {
     display: flex;
@@ -26,6 +32,7 @@
 }
 .imagen{
     height: 70px;
+    border-radius: 35px;
 }
 .tarjeta-fecha{
     font-size: 13px;
@@ -60,7 +67,7 @@
     align-items: center;
 }
 .usuarios{
-    height: 35%;
+    height: 28%;
     width: 85%;
     background-color: #343a40!important;
     border-radius: 15px;
@@ -76,7 +83,7 @@
 h6{
     text-transform: capitalize;
 }
-img{
+.img-card{
     height: 50px;
     border: none;
     border-radius: 32px;
@@ -86,8 +93,32 @@ img{
     align-items: center;
 
 }
+.perfil-imagen{
+    display: flex;
+    justify-content: center;
+    background-color:#e5e9e3 ;
+    border-radius: 15px;
+}
+.img-perfil{
+    height: 160px;
+    border-radius: 95px;
+    border: #ffffff;
+    border-style: double;
+    border-color: #ffffff;
+}
 
-
+.footer{
+    background-color: #343a40;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 1rem;
+    width: 100%;
+    height: 81px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
 
 /* @media screen and (min_width:691px) and (max_width:1090px){
     
@@ -202,6 +233,9 @@ img{
     .imagen{
         height: 50px;
         margin-top: 30px;
+    }
+    .img-perfil{
+        height: 50px;
     }
     .alineado{
         display: flex;

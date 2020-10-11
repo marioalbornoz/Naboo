@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
-import { Redirect } from 'react-router-dom';
 import AuthHandler from '../utils/AuthHandler';
+import Config from '../utils/Config';
 import { AlumnosContext } from './AlumnosContext';
 import { AuthContext } from './AuthContext';
 
@@ -28,8 +28,10 @@ const PerfilProvider = (props) => {
                   return ;
                 } catch (error) {
                   console.error(error);
-                  AuthHandler.logoutUser();
-                  return <Redirect to="/logout"/>;
+                  if(error.status!==401) {
+                    AuthHandler.logoutUser();
+                    window.location = Config.logoutPageUrl;
+                }
                 }
                 
               };

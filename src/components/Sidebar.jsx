@@ -57,48 +57,52 @@ export const Sidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="/profesores">
-                <i className="fas fa-chalkboard-teacher mr-2" />
-                Profesores
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
-                Funcionarios
-              </a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link text-secondary" href="/alumnos">
                 <i className="fas fa-user-graduate mr-2" />
                 Alumnos
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
-                Integrations
-              </a>
-            </li>
-          </ul>
-          
-          <ul className="nav flex-column mb-2">
-            <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
-                Current month
+              <a className="nav-link text-secondary" href="/profesores">
+                <i className="fas fa-chalkboard-teacher mr-2" />
+                Academicos
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link text-secondary" href="!#">
-                Last quarter
+              <i className="fas fa-user-alt mr-2" />
+              Funcionarios
+              </a>
+            </li>
+            
+            <li className="nav-item">
+              <a className="nav-link text-secondary" href="!#">
+              <i className="fas fa-briefcase-medical mr-2" />Sesaes
+              </a>
+            </li>
+            <li className="nav-item mt-4 pt-4">
+              <a className="nav-link text-secondary" href="!#">
+                Perfil
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-secondary" href="https://www.reko.cl">
+                Reko
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-secondary" href="https://www.academia.utem.cl">
+                Academia
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link text-secondary" href="!#">
-                Social engagement
+                Acerca de
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
-                Year-end sale
+            <li className="nav-item mb-4 pb-4">
+              <a className="nav-link text-secondary" href="/logout">
+              Cerrar sesion
               </a>
             </li>
           </ul>

@@ -67,7 +67,7 @@ export const Login = () => {
                     </div>
                     {loginStatus === 4 ? (
                       <div className="alert alert-danger">
-                        <strong>Invalid Login Details</strong>
+                        <strong>Datos ingresados no corresponden</strong>
                       </div>
                     ) : null}
                     <form

@@ -2,10 +2,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react'
 import axios from "axios";
 import AuthHandler from '../utils/AuthHandler';
 import { AuthContext } from './AuthContext';
-// import { Redirect } from 'react-router-dom';
-// import Config from '../utils/Config';
-import { Redirect } from 'react-router-dom';
-// import { AuthContext } from './AuthContext';
+import Config from '../utils/Config';
 
 //creando el context
 export const AlumnosContext = createContext();
@@ -47,7 +44,7 @@ const AlumnosProvider = (props) => {
                 console.error(error);
                 if(error.status!==401) {
                     AuthHandler.logoutUser();
-                    return <Redirect to="/logout"/>;
+                    window.location = Config.logoutPageUrl;
                 }
             }
         }
