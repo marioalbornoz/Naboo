@@ -16,6 +16,9 @@
     border: none;
     border-radius: 32px;
 }
+.inputfolio{
+    border:none !important;
+}
 .tarjeta {
     display: flex;
     align-items: stretch;
@@ -56,6 +59,9 @@
 .redondeado{
     border-radius: 10px;
     border: nones !important;
+}
+.cabecera{
+    background-color: #1F6FD0 !important;
 }
 
 .fondo {

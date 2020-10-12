@@ -14,7 +14,7 @@ export const Perfil = () => {
         <div className="title m-3 ml-5 pb-4">
           <h4 className="font-weight-bold">Perfil Usuario</h4>
         </div>
-        <div className="card shadow redondeado ml-5">
+        <div className="card shadow redondeado ml-lg-5">
           <div className="perfil-imagen m-2">
             <img src={img} alt="" className="img-perfil" />
           </div>

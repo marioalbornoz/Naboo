@@ -35,7 +35,7 @@ export const AlumnosLista = () => {
 
         <div className="card table-responsive redondeado shadow">
           <table className="table table-hover">
-            <thead className="thead-dark">
+            <thead className="thead text-white cabecera">
               <tr>
                 <th>Alumno</th>
                 <th className="rut">Rut</th>

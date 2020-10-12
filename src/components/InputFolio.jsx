@@ -47,7 +47,7 @@ export const InputFolio = () => {
         id="content"
         value={formulario}
         onChange={leerHistoria}
-        className="form-control redondeado h-200"
+        className="form-control inputfolio redondeado h-200"
         placeholder="Ingresa tu texto aqui"
         aria-label="Ingresa tu texto aqui"
         aria-describedby="basic-addon2"
