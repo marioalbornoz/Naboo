@@ -82,7 +82,7 @@ export const Login = () => {
                           name="username"
                           id="id_username"
                           aria-describedby="emailHelp"
-                          placeholder="usuario"
+                          placeholder="Usuario"
                           onChange={guardarDatos}
                           required
                         />
@@ -109,7 +109,7 @@ export const Login = () => {
                             className="custom-control-label"
                             htmlFor="customCheck"
                           >
-                            Recuerdame
+                            Recuérdame
                           </label>
                         </div>
                       </div>
