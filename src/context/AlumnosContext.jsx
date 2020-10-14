@@ -33,7 +33,7 @@ const AlumnosProvider = (props) => {
         if(ismounted){
             try {
                 const obtenerListaAlumnos = async() => {
-                    const url = `http://localhost:8000/api/alumno/`;
+                    const url = `http://localhost:8000/api/alumno/?page=1`;
                     const alumnos = await axios(url);
                     guardarAlumnosLista(alumnos.data);
                     

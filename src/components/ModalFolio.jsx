@@ -21,7 +21,7 @@ export const ModalFolio = () => {
   )
   
   const traerFoliosEspecificos = 
-    parseInt(idPerfil) === 0 || parseInt(idPerfil)===1 ? (
+    parseInt(idPerfil) === 2 || parseInt(idPerfil)===1 ? (
       folios ? (
         Object.values(folios)
           .filter((foliofilter) => foliofilter.alumno.id === id)
