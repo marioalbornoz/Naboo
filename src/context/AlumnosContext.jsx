@@ -35,7 +35,7 @@ const AlumnosProvider = (props) => {
                 const obtenerListaAlumnos = async() => {
                     const url = `http://localhost:8000/api/alumno/?page=1`;
                     const alumnos = await axios(url);
-                    guardarAlumnosLista(alumnos.data);
+                    guardarAlumnosLista(alumnos.data.results);
                     
                 }
                 obtenerListaAlumnos();
