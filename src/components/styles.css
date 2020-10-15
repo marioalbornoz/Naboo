@@ -243,6 +243,9 @@ h6{
 }
 
 @media screen and (max-width: 600px) and (min-width: 382px){
+    .logo {
+        padding-right: 50px;
+    }
     .tarjeta{
         display: block;
         width: 100%;
