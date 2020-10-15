@@ -42,7 +42,7 @@ export const Feedbacks = () => {
     }
     return (!loading ? (
         <form onSubmit={handleSubmit}>
-          <textarea name="feedback" id="feedback" onChange={getInput} value={comentarios}  className="form-control"></textarea>
+          <textarea name="feedback" id="feedback" onChange={getInput} value={comentarios}  className="form-control" required></textarea>
           <button className="btn btn-outline-primary btn-block">Enviar</button>
         </form>
       ):
