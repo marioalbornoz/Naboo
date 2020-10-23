@@ -5,9 +5,10 @@ import { ContenidoFolio } from "./ContenidoFolio";
 import { InputFolio } from "./InputFolio";
 import perfilStudent from "../student.png";
 import { PerfilContext } from "../context/PerfilContext";
+import { useEffect } from "react";
 
 export const ModalFolio = () => {
-  const { folios, indice } = useContext(FolioContext);
+  const { folios, indice, guardarContadorTotal, guardarContadorAlumno, contadoralumno } = useContext(FolioContext);
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
   const {perfil} = useContext(PerfilContext);
@@ -15,11 +16,28 @@ export const ModalFolio = () => {
   const {groups} = perfil;
   
   const idPerfil = (
-    groups ? groups.map(perfil => (
+    groups ? groups.map(perfil => parseInt(
       perfil.id)
      ) : null
   )
+
   
+  useEffect(()=>{
+    const contarFoliosTotales = () => {
+      let countfilter = 0;
+      if(folios){
+        guardarContadorTotal(folios.length);
+        for(let i = 0; i< folios.length ; i++){
+          if(folios[i].alumno.id ===id || folios[i].username === "administrador"  && folios[i].user === perfil.id){
+            countfilter = countfilter +1;
+           guardarContadorAlumno(countfilter);
+          }
+        }
+        
+      }
+    }
+    contarFoliosTotales();
+  }, [folios, guardarContadorTotal, id, perfil, guardarContadorAlumno])
   const traerFoliosEspecificos = 
     parseInt(idPerfil) === 2 || parseInt(idPerfil)===1 ? (
       folios ? (
@@ -79,6 +97,7 @@ export const ModalFolio = () => {
                 <div className="datos">
                   {carrera ? <p>{carrera.nombre}</p> : null}
                   <p>Rut: {rut}</p>
+                  <p>Cantidad de folios ingresados: {contadoralumno}</p>
                 </div>
               </div>
               <InputFolio />

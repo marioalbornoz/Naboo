@@ -1,18 +1,30 @@
 import React from 'react'
 import "./styles.css";
 import perfil from "../avatarHombre.png"
+// import { FolioContext } from '../context/FolioContext';
 
 export const ContenidoFolio = ({folioalumno}) => {
 
-  const formatofecha = (date) => {
-    const dato = date.split(".")[0]
-    const fecha = dato.split("T")[0]
-    const hora = dato.split("T")[1]
+  // const {guardarContador} = useContext(FolioContext);
+
+  // useEffect(() => {
+  //   if(folioalumno){
+  //     console.log("numero de folios de mario:",folioalumno.length)
+  //   }
+  //   else{
+  //     console.log("sin folios");
+  //   }
+  // }, [folioalumno]);
+
+  function formatofecha(date) {
+    const dato = date.split(".")[0];
+    const fecha = dato.split("T")[0];
+    const hora = dato.split("T")[1];
     return [
       hora,
       "  ",
       fecha
-  ]
+    ];
   }
     return (
       <div className="tarjeta shadow mb-3">

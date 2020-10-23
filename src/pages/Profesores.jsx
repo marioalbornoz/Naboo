@@ -2,6 +2,7 @@ import React, {  useContext } from 'react'
 import { UserContext } from '../context/UserContext'
 import "./style.css";
 import imagen from "../perfil-clase.png";
+import { Spinner } from '../components/Spinner';
 
 export const Profesores = () => {
 
@@ -16,7 +17,7 @@ export const Profesores = () => {
           {usuarios.data ? (
             usuarios.data.map((user) => (
                 <div className="card text-white usuarios shadow col-lg-3 col-md-5 col-sm-12" key={user.id}>
-                  <div className="card-header">{ (user)? (user.groups).map(grupo => (
+                  <div className="card-header">{ (user.groups)? (user.groups).map(grupo => (
                     grupo.name
                   )) : console.log(user)}</div>
                   <div className="card-body cuerpo">
@@ -25,9 +26,7 @@ export const Profesores = () => {
                   </div>
                 </div>
             ))
-          ) : (
-            <p>Cargando usuarios</p>
-          )}
+          ) : <Spinner />}
           </div>
       </div>
     );

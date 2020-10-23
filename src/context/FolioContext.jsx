@@ -12,6 +12,8 @@ const FolioProvider = (props) => {
   const [folios, guardarFolioLista] = useState([]);
   const [indice, setindice] = useState({});
   const [actualizar, guardarActuaizar] = useState(false);
+  const [contadortotal, guardarContadorTotal] = useState(0);
+  const [contadoralumno, guardarContadorAlumno] = useState(0);
   
   //ejecutar llamado a la api
   useEffect(() => {
@@ -28,6 +30,7 @@ const FolioProvider = (props) => {
         } catch (error) {
           console.error(error);
           if(error.status!==401) {
+            alert("Tiempo de conexion agotado!")
             AuthHandler.logoutUser();
             window.location = Config.logoutPageUrl;
           }
@@ -47,6 +50,10 @@ const FolioProvider = (props) => {
         setindice,
         indice,
         guardarActuaizar,
+        contadortotal,
+        guardarContadorTotal,
+        contadoralumno,
+        guardarContadorAlumno
       }}
     >
       {props.children}

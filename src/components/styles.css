@@ -132,6 +132,12 @@ h6{
 .card-carrera{
     padding: 0 0 0 0;
 }
+.check{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    font-size: 14px;
+}
 .footer{
     background-color: #1c61a7;
     color: #ffffff;
