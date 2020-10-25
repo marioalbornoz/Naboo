@@ -9,7 +9,6 @@ export const InputFolio = () => {
   // Utiliza useContext
   const { idUsuario } = useContext(AlumnosContext);
   const { indice, guardarActuaizar } = useContext(FolioContext);
-  // const { guardarContent } = useContext(ModalContext);
   const [formulario, guardarForm] = useState("");
 
   //radio

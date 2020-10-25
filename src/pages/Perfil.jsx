@@ -3,12 +3,8 @@ import { PerfilContext } from '../context/PerfilContext';
 import img from '../perfil-clase.png';
 export const Perfil = () => {
   const { perfil } = useContext(PerfilContext);
-    const {username, email, groups, is_decano} = perfil;
-    const idPerfil = (
-      groups ? groups.map(perfil => (
-        perfil.name)
-       ) : null
-    )
+    const {username, email, is_decano, rol} = perfil;
+    
     return perfil ? (
       <div className="col-lg-9 col-md-8 mt-5 perfil">
         <div className="title m-3 ml-5 pb-4">
@@ -30,7 +26,7 @@ export const Perfil = () => {
             ) : null}
             <p className="lead">
               <span className="font-weight-bold">Rol de Usuario</span>:{" "}
-              {idPerfil}
+              {rol}
             </p>
             <p className="lead">
               <span className="font-weight-bold">Correo</span>: {email}

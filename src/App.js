@@ -17,6 +17,7 @@ import AuthProvider from './context/AuthContext';
 import UserProvider from './context/UserContext';
 import PerfilProvider from './context/PerfilContext';
 import { Perfil } from './pages/Perfil';
+import CarreraProvider from './context/CarreraContext';
 // import { Footer } from './components/Footer';
 
 
@@ -27,7 +28,7 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/logout" component={Logout} />
-
+          <CarreraProvider>
           <AlumnosProvider>
             <PerfilProvider>
               <UserProvider>
@@ -60,6 +61,7 @@ function App() {
               </UserProvider>
             </PerfilProvider>
           </AlumnosProvider>
+          </CarreraProvider>
         </Switch>
       </Router>
     </AuthProvider>

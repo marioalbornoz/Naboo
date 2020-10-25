@@ -21,6 +21,7 @@ export const ModalFolio = () => {
      ) : null
   )
 
+  // useEffect que se ejecuta cuando se actualizan los folios 
   
   useEffect(()=>{
     const contarFoliosTotales = () => {
