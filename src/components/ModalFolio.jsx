@@ -8,39 +8,43 @@ import { PerfilContext } from "../context/PerfilContext";
 import { useEffect } from "react";
 
 export const ModalFolio = () => {
-  const { folios, indice, guardarContadorTotal, guardarContadorAlumno, contadoralumno } = useContext(FolioContext);
+  const {
+    folios,
+    indice,
+    guardarContadorTotal,
+    guardarContadorAlumno,
+    contadoralumno,
+  } = useContext(FolioContext);
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
-  const {perfil} = useContext(PerfilContext);
+  const { perfil } = useContext(PerfilContext);
   const { guardarActuaizar } = useContext(FolioContext);
 
-  
-  // const idPerfil = (
-  //   groups ? groups.map(perfil => parseInt(
-  //     perfil.id)
-  //    ) : null
-  // )
+  // useEffect que se ejecuta cuando se actualizan los folios
 
-  // useEffect que se ejecuta cuando se actualizan los folios 
-  
-  useEffect(()=>{
+  useEffect(() => {
     const contarFoliosTotales = () => {
       let countfilter = 0;
       //permite actualizar el estado a false
       guardarActuaizar(false);
-      if(folios){
+      if (folios) {
         guardarContadorTotal(folios.length);
-        for(let i = 0; i< folios.length ; i++){
-          if(folios[i].alumno.id ===id || folios[i].username === "administrador"  && folios[i].user === perfil.id){
-            countfilter = countfilter +1;
-           guardarContadorAlumno(countfilter);
+        for (let i = 0; i < folios.length; i++) {
+          if (
+            folios[i].alumno.id === id ||
+            (folios[i].username === "administrador" &&
+              folios[i].user === perfil.id)
+          ) {
+            countfilter = countfilter + 1;
+            guardarContadorAlumno(countfilter);
           }
         }
-        
       }
-    }
+    };
     contarFoliosTotales();
-  }, [folios, guardarContadorTotal, id, perfil, guardarContadorAlumno])
+  }, [folios, guardarContadorTotal, id, perfil, guardarContadorAlumno, guardarActuaizar]);
+
+  // Funcion que trae los folios
   const traerFoliosEspecificos =
     perfil.rol === "jefe de carrera" || perfil.rol === "administrador" ? (
       folios ? (

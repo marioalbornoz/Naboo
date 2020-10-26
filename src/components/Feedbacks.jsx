@@ -6,13 +6,15 @@ import { Spinner } from './Spinner';
 export const Feedbacks = () => {
     const { idUsuario } = useContext(AlumnosContext);
     const [comentarios, guardarComentarios] = useState("");
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if(loading){
-            setTimeout(()=>{
-                alert('gracias por tu comentario! Estamos trabajando para mejorar el sitio')
-            }, 4000)
+            setTimeout(() => {
+              alert(
+                "gracias por tu comentario! Estamos trabajando para mejorar el sitio"
+              );
+            }, 4000);
         }
     }, [loading])
     const getInput = (e) => {
@@ -20,17 +22,17 @@ export const Feedbacks = () => {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch('http://127.0.0.1:8000/api/feedback/', {
-        method: "POST",    
-        headers: {
-                Authorization: `JWT ${localStorage.getItem("token")}`,
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-                comentario: comentarios,
-                user: idUsuario,
-              }),
-        } );
+        const res = await fetch("http://127.0.0.1:8000/api/feedback/", {
+          method: "POST",
+          headers: {
+            Authorization: `JWT ${localStorage.getItem("token")}`,
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            comentario: comentarios,
+            user: idUsuario,
+          }),
+        });
         
         setLoading(true);
         console.log(res);

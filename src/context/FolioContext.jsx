@@ -8,16 +8,18 @@ import { AuthContext } from "./AuthContext";
 export const FolioContext = createContext();
 // Provider
 const FolioProvider = (props) => {
-  const {ismounted} = useContext(AuthContext)
+  const { ismounted } = useContext(AuthContext);
   const [folios, guardarFolioLista] = useState([]);
   const [indice, setindice] = useState({});
   const [actualizar, guardarActuaizar] = useState(false);
   const [contadortotal, guardarContadorTotal] = useState(0);
   const [contadoralumno, guardarContadorAlumno] = useState(0);
-  
+  const [foliospriorityone, guardarContadorPriorityOne] = useState([]);
+  const [foliosprioritytwo, guardarContadorPriorityTwo] = useState([]);
+
   //ejecutar llamado a la api
   useEffect(() => {
-    if(ismounted){
+    if (ismounted) {
       const obtenerListaFolio = async () => {
         try {
           const allfolio = await axios.get(Config.listFolios, {
@@ -25,13 +27,19 @@ const FolioProvider = (props) => {
               Authorization: `JWT ${localStorage.getItem("token")}`,
             },
           });
+          const obtenerFoliosPrioridad1 = allfolio.data.data.filter(
+            (data) => data.priority_one === true
+          );
+          guardarContadorPriorityOne(obtenerFoliosPrioridad1);
+          const obtenerFoliosPrioridad2 = allfolio.data.data.filter(
+            (data) => data.priority_one === false
+          );
+          guardarContadorPriorityTwo(obtenerFoliosPrioridad2);
           guardarFolioLista(allfolio.data.data);
-          
-          
         } catch (error) {
           console.error(error);
-          if(error.status!==401) {
-            alert("Tiempo de conexion agotado!")
+          if (error.status !== 401) {
+            alert("Tiempo de conexion agotado!");
             AuthHandler.logoutUser();
             window.location = Config.logoutPageUrl;
           }
@@ -39,7 +47,7 @@ const FolioProvider = (props) => {
       };
       obtenerListaFolio();
     }
-  }, [actualizar,ismounted]);
+  }, [actualizar, ismounted]);
   return (
     <FolioContext.Provider
       value={{
@@ -51,7 +59,9 @@ const FolioProvider = (props) => {
         contadortotal,
         guardarContadorTotal,
         contadoralumno,
-        guardarContadorAlumno
+        guardarContadorAlumno,
+        foliospriorityone,
+        foliosprioritytwo,
       }}
     >
       {props.children}

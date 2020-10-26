@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import FotoCarreras from "../groups.png"
-import { Spinner } from './Spinner'
+// import { Spinner } from './Spinner'
 
 export const Facultad = ({carreras, nombrecarrera}) => {
     

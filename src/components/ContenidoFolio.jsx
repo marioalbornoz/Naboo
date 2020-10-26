@@ -1,19 +1,13 @@
 import React from 'react'
 import "./styles.css";
 import perfil from "../avatarHombre.png"
+import { formatofecha } from '../helpers';
 // import { FolioContext } from '../context/FolioContext';
 
 export const ContenidoFolio = ({folioalumno}) => {
-  function formatofecha(date) {
-    const dato = date.split(".")[0];
-    const fecha = dato.split("T")[0];
-    const hora = dato.split("T")[1];
-    return [
-      hora,
-      "  ",
-      fecha
-    ];
-  }
+
+  
+  
     return (
       <div className="tarjeta shadow mb-3">
         <div className="picture">
