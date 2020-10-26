@@ -12,20 +12,22 @@ export const ModalFolio = () => {
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
   const {perfil} = useContext(PerfilContext);
+  const { guardarActuaizar } = useContext(FolioContext);
+
   
-  const {groups} = perfil;
-  
-  const idPerfil = (
-    groups ? groups.map(perfil => parseInt(
-      perfil.id)
-     ) : null
-  )
+  // const idPerfil = (
+  //   groups ? groups.map(perfil => parseInt(
+  //     perfil.id)
+  //    ) : null
+  // )
 
   // useEffect que se ejecuta cuando se actualizan los folios 
   
   useEffect(()=>{
     const contarFoliosTotales = () => {
       let countfilter = 0;
+      //permite actualizar el estado a false
+      guardarActuaizar(false);
       if(folios){
         guardarContadorTotal(folios.length);
         for(let i = 0; i< folios.length ; i++){
@@ -39,8 +41,8 @@ export const ModalFolio = () => {
     }
     contarFoliosTotales();
   }, [folios, guardarContadorTotal, id, perfil, guardarContadorAlumno])
-  const traerFoliosEspecificos = 
-    parseInt(idPerfil) === 2 || parseInt(idPerfil)===1 ? (
+  const traerFoliosEspecificos =
+    perfil.rol === "jefe de carrera" || perfil.rol === "administrador" ? (
       folios ? (
         Object.values(folios)
           .filter((foliofilter) => foliofilter.alumno.id === id)
@@ -56,12 +58,12 @@ export const ModalFolio = () => {
           (foliofilter) =>
             foliofilter.alumno.id === id && foliofilter.user === idUsuario
         )
-        .map((folioalumno,i) => (
+        .map((folioalumno, i) => (
           <ContenidoFolio key={i} folioalumno={folioalumno} />
         ))
     ) : (
       <p>No hay folios</p>
-    )
+    );
   return (
     <div
       className="modal fade bd-example-modal-lg"

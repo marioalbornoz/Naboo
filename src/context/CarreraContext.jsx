@@ -11,6 +11,7 @@ const CarreraProvider = (props) => {
     // const [historia, guardarHistoria] = useState("");
     const [facultades, guardarFacultad] = useState([])
     const [carreras, guardarCarrera] = useState([])
+
     
     //ejecutar llamado a la api
     useEffect(()=> {
@@ -50,7 +51,7 @@ const CarreraProvider = (props) => {
         <CarreraContext.Provider
             value={{
                 carreras,
-                facultades
+                facultades,
             }}
             >
             {props.children}

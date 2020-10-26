@@ -26,7 +26,8 @@ const FolioProvider = (props) => {
             },
           });
           guardarFolioLista(allfolio.data.data);
-          return;
+          
+          
         } catch (error) {
           console.error(error);
           if(error.status!==401) {
@@ -36,11 +37,7 @@ const FolioProvider = (props) => {
           }
         }
       };
-      if (!actualizar) {
-        obtenerListaFolio();
-      } else {
-        obtenerListaFolio();
-      }
+      obtenerListaFolio();
     }
   }, [actualizar,ismounted]);
   return (
@@ -49,6 +46,7 @@ const FolioProvider = (props) => {
         folios,
         setindice,
         indice,
+        actualizar,
         guardarActuaizar,
         contadortotal,
         guardarContadorTotal,

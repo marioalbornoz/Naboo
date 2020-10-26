@@ -45,7 +45,13 @@ export const Navbar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/alumnos">
+            <a
+              className="nav-link"
+              href="/alumnos"
+              onClick={() => {
+                localStorage.removeItem("carrera");
+              }}
+            >
               Alumnos
             </a>
           </li>

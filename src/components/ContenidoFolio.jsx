@@ -4,18 +4,6 @@ import perfil from "../avatarHombre.png"
 // import { FolioContext } from '../context/FolioContext';
 
 export const ContenidoFolio = ({folioalumno}) => {
-
-  // const {guardarContador} = useContext(FolioContext);
-
-  // useEffect(() => {
-  //   if(folioalumno){
-  //     console.log("numero de folios de mario:",folioalumno.length)
-  //   }
-  //   else{
-  //     console.log("sin folios");
-  //   }
-  // }, [folioalumno]);
-
   function formatofecha(date) {
     const dato = date.split(".")[0];
     const fecha = dato.split("T")[0];
@@ -45,8 +33,8 @@ export const ContenidoFolio = ({folioalumno}) => {
 
             <div className="tarjeta-fecha">
               <p>
-                {formatofecha(folioalumno.created).map((tiempo) => (
-                  <span>{tiempo}</span>
+                {formatofecha(folioalumno.created).map((tiempo,i) => (
+                  <span key={i}>{tiempo}</span>
                 ))}
               </p>
             </div>

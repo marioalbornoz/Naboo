@@ -41,6 +41,7 @@ class AuthHandler {
   static logoutUser() {
     reactLocalStorage.remove("token");
     reactLocalStorage.remove("refresh");
+    reactLocalStorage.remove("carrera")
   }
 
   static checkTokenExpiry() {

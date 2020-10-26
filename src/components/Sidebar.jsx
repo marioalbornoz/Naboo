@@ -57,7 +57,9 @@ export const Sidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="/alumnos">
+              <a className="nav-link text-secondary" href="/alumnos" onClick={ ()=>{
+              localStorage.removeItem('carrera');
+            }}>
                 <i className="fas fa-user-graduate mr-2" />
                 Alumnos
               </a>
