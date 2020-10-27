@@ -6,9 +6,9 @@ export const Report = () => {
       foliostotales,
       foliospriorityone,
       foliosprioritytwo,
-      foliosmes,
-      mes,
-      guardarMes,
+    //   foliosmes,
+    //   mes,
+    //   guardarMes,
     } = useContext(FolioContext);
     
     return (
