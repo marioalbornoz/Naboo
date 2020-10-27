@@ -3,6 +3,7 @@ import axios from "axios";
 import Config from "../utils/Config";
 import AuthHandler from "../utils/AuthHandler";
 import { AuthContext } from "./AuthContext";
+import { ObtenerMes } from "../helpers";
 
 //creando el context
 export const FolioContext = createContext();
@@ -14,6 +15,7 @@ const FolioProvider = (props) => {
   const [actualizar, guardarActuaizar] = useState(false);
   const [contadortotal, guardarContadorTotal] = useState(0);
   const [contadoralumno, guardarContadorAlumno] = useState(0);
+  const [foliostotales, guardarContadorFoliosTotales] = useState(0)
   const [foliospriorityone, guardarContadorPriorityOne] = useState([]);
   const [foliosprioritytwo, guardarContadorPriorityTwo] = useState([]);
 
@@ -27,15 +29,33 @@ const FolioProvider = (props) => {
               Authorization: `JWT ${localStorage.getItem("token")}`,
             },
           });
+          // se guarda cantidad de folios totales
+          guardarContadorFoliosTotales(allfolio.data.data.length);
+          //funcion que guarda los folios prioridad 1
           const obtenerFoliosPrioridad1 = allfolio.data.data.filter(
             (data) => data.priority_one === true
           );
           guardarContadorPriorityOne(obtenerFoliosPrioridad1);
+          //funcion que guarda los folios prioridad 2
           const obtenerFoliosPrioridad2 = allfolio.data.data.filter(
             (data) => data.priority_one === false
           );
           guardarContadorPriorityTwo(obtenerFoliosPrioridad2);
+          // Se guardan todos los folios en el estado
           guardarFolioLista(allfolio.data.data);
+
+          // funcion que obtiene folios por mes
+          const obtenerFoliosMes = (mes, folios) => {
+            console.log('mes context:', mes);
+            if(allfolio){
+                const meses = folios.filter(
+                (dato) => ObtenerMes(dato.created) === mes
+              )
+              console.log(meses);
+            }
+            
+          };
+          obtenerFoliosMes('octubre', allfolio.data.data);
         } catch (error) {
           console.error(error);
           if (error.status !== 401) {
@@ -60,6 +80,7 @@ const FolioProvider = (props) => {
         guardarContadorTotal,
         contadoralumno,
         guardarContadorAlumno,
+        foliostotales,
         foliospriorityone,
         foliosprioritytwo,
       }}

@@ -18,6 +18,7 @@ import UserProvider from './context/UserContext';
 import PerfilProvider from './context/PerfilContext';
 import { Perfil } from './pages/Perfil';
 import CarreraProvider from './context/CarreraContext';
+import { Report } from './pages/Report';
 // import { Footer } from './components/Footer';
 
 
@@ -52,6 +53,11 @@ function App() {
                           exact
                           path="/perfil/:id"
                           component={Perfil}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/reportes"
+                          component={Report}
                         />
                         <PrivateRoute exact path="/" component={ContenrHome} />
                       </Switch>

@@ -29,10 +29,8 @@ export const Sidebar = () => {
                         src={Avatar}
                         alt="perfil"
                         style={{ height: 30 }}
-                      />
-                      {" "}
+                      />{" "}
                       {usuario.username}{" "}
-                      
                     </a>
                   ))
               ) : (
@@ -57,9 +55,13 @@ export const Sidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="/alumnos" onClick={ ()=>{
-              localStorage.removeItem('carrera');
-            }}>
+              <a
+                className="nav-link text-secondary"
+                href="/alumnos"
+                onClick={() => {
+                  localStorage.removeItem("carrera");
+                }}
+              >
                 <i className="fas fa-user-graduate mr-2" />
                 Alumnos
               </a>
@@ -72,14 +74,22 @@ export const Sidebar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link text-secondary" href="!#">
-              <i className="fas fa-user-alt mr-2" />
-              Funcionarios
+                <i className="fas fa-user-alt mr-2" />
+                Funcionarios
               </a>
             </li>
-            
+
             <li className="nav-item">
               <a className="nav-link text-secondary" href="!#">
-              <i className="fas fa-briefcase-medical mr-2" />Sesaes
+                <i className="fas fa-briefcase-medical mr-2" />
+                Sesaes
+              </a>
+            </li>
+
+            <li className="nav-item">
+              <a className="nav-link text-secondary" href="/reportes">
+                <i className="fas fa-chart-bar mr-2" />
+                Reportes
               </a>
             </li>
             <li className="nav-item mt-4 pt-4">
@@ -93,7 +103,10 @@ export const Sidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="https://www.academia.utem.cl">
+              <a
+                className="nav-link text-secondary"
+                href="https://www.academia.utem.cl"
+              >
                 Academia
               </a>
             </li>
@@ -104,7 +117,7 @@ export const Sidebar = () => {
             </li>
             <li className="nav-item mb-4 pb-4">
               <a className="nav-link text-secondary" href="/logout">
-              Cerrar sesion
+                Cerrar sesion
               </a>
             </li>
           </ul>

@@ -3,8 +3,7 @@ export function formatofecha(date) {
     const fecha = dato.split("T")[0];
     const mes = fecha.split("-")[1];
     const anio = fecha.split("-")[0];
-    const dia = fecha.split("-")[2]
-    console.log(mes);
+    const dia = fecha.split("-")[2];
     const hora = dato.split("T")[1];
     return [
       hora,
@@ -14,7 +13,7 @@ export function formatofecha(date) {
       anio
     ];
   }
-export function mes(date){
+export function ObtenerMes(date){
     const dato = date.split(".")[0];
     const fecha = dato.split("T")[0];
     const mes = fecha.split("-")[1];
@@ -37,11 +36,11 @@ export function mes(date){
             return `agosto`;
         case 9:
             return `septiembre`;
-        case 10:
-            return `octubre`;
-        case 11:
+        case '10':
+            return 'octubre';
+        case '11':
             return `noviembre`;
-        case 12:
+        case '12':
             return `diciembre`;
     
         default:

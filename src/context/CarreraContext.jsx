@@ -1,6 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react'
 import axios from "axios";
 import Config from '../utils/Config';
+import AuthHandler from '../utils/AuthHandler';
+import { useContext } from 'react';
+import { AuthContext } from './AuthContext';
 // import AuthHandler from '../utils/AuthHandler';
 
 //creando el context
@@ -8,45 +11,52 @@ export const CarreraContext = createContext();
 
 // Provider
 const CarreraProvider = (props) => {
-    // const [historia, guardarHistoria] = useState("");
-    const [facultades, guardarFacultad] = useState([])
+  const {ismounted} = useContext(AuthContext);
+  const [facultades, guardarFacultad] = useState([])
     const [carreras, guardarCarrera] = useState([])
 
     
     //ejecutar llamado a la api
     useEffect(()=> {
-      try {
-        const obtenerFacultades = async() => {
-          const facultades = await axios(Config.facultades, {
-            headers: {
-              Authorization: `JWT ${localStorage.getItem("token")}`,
-            }})
-          guardarFacultad(facultades.data);
+      if(ismounted){
+        try {
+          const obtenerFacultades = async() => {
+            const facultades = await axios(Config.facultades, {
+              headers: {
+                Authorization: `JWT ${localStorage.getItem("token")}`,
+              }})
+            guardarFacultad(facultades.data);
+          }
+          obtenerFacultades();
+        } catch (error) {
+          console.error(error);
+          AuthHandler.logoutUser();
+          window.location = Config.logoutPageUrl;
+          
         }
-        obtenerFacultades();
-      } catch (error) {
-        console.error(error);
       }
       
       
-    }, [])
+    }, [ismounted])
   
     useEffect(()=> {
-      try {
-        const obtenerEscuelas = async() => {
-          const carreras = await axios(Config.carreras, {
-            headers: {
-              Authorization: `JWT ${localStorage.getItem("token")}`,
-            }})
-          guardarCarrera(carreras.data.data);
+      if(ismounted){
+        try {
+          const obtenerEscuelas = async() => {
+            const carreras = await axios(Config.carreras, {
+              headers: {
+                Authorization: `JWT ${localStorage.getItem("token")}`,
+              }})
+            guardarCarrera(carreras.data.data);
+          }
+          obtenerEscuelas();
+        } catch (error) {
+          console.error(error);
         }
-        obtenerEscuelas();
-      } catch (error) {
-        console.error(error);
       }
       
       
-    }, [])
+    }, [ismounted])
     return (
         <CarreraContext.Provider
             value={{
