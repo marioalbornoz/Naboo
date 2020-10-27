@@ -14,11 +14,14 @@ export const ModalFolio = () => {
     guardarContadorTotal,
     guardarContadorAlumno,
     contadoralumno,
+    foliosmes,
+    guardarMes,
   } = useContext(FolioContext);
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
   const { perfil } = useContext(PerfilContext);
-  const { guardarActuaizar } = useContext(FolioContext);
+  const { guardarActuaizar, filtrando, guardarFiltrando } = useContext(FolioContext);
+
 
   // useEffect que se ejecuta cuando se actualizan los folios
 
@@ -47,15 +50,18 @@ export const ModalFolio = () => {
   // Funcion que trae los folios
   const traerFoliosEspecificos =
     perfil.rol === "jefe de carrera" || perfil.rol === "administrador" ? (
-      folios ? (
+      folios && !filtrando ? (
         Object.values(folios)
           .filter((foliofilter) => foliofilter.alumno.id === id)
           .map((folioalumno, i) => (
             <ContenidoFolio key={i} folioalumno={folioalumno} />
           ))
       ) : (
-        <p>No hay folios</p>
-      )
+        foliosmes.filter((foliofilter) => foliofilter.alumno.id === id)
+        .map((folioalumno, i) => (
+          <ContenidoFolio key={i} folioalumno={folioalumno} />
+        )
+      ))
     ) : folios ? (
       Object.values(folios)
         .filter(
@@ -68,6 +74,15 @@ export const ModalFolio = () => {
     ) : (
       <p>No hay folios</p>
     );
+
+     // funcion para leer el contenido desde el filtrado
+     const obtenerDatosFilter = (e) => {
+      if(e.target.value !== ""){
+        guardarMes(e.target.value);
+        guardarFiltrando(true);
+      }
+      else guardarFiltrando(false)
+  }
   return (
     <div
       className="modal fade bd-example-modal-lg"
@@ -108,6 +123,39 @@ export const ModalFolio = () => {
                 </div>
               </div>
               <InputFolio />
+              <form className="form-groups">
+                <label>Filtrar</label>
+                <div className="form-row">
+                  <div className="form-group col-4">
+                    <select name="mes" onChange={obtenerDatosFilter} className="form-control form-control-sm">
+                      <option value="">Selecciona un mes</option>
+                      <option value="enero">Enero</option>
+                      <option value="febrero">Febrero</option>
+                      <option value="marzo">Marzo</option>
+                      <option value="abril">Abril</option>
+                      <option value="mayo">Mayo</option>
+                      <option value="junio">Junio</option>
+                      <option value="julio">Julio</option>
+                      <option value="agosto">Agosto</option>
+                      <option value="septiembre">Septiembre</option>
+                      <option value="octubre">Octubre</option>
+                      <option value="noviembre">Noviembre</option>
+                      <option value="diciembre">Diciembre</option>
+                    </select>
+                  </div>
+                  <div className="form-group col-4">
+                    <select className="form-control form-control-sm">
+                      <option>2020</option>
+                    </select>
+                  </div>
+                  <div className="form-group col-4">
+                    <select className="form-control form-control-sm">
+                      <option value="1">Prioridad 1</option>
+                      <option value="2">Prioridad 2</option>
+                    </select>
+                  </div>
+                </div>
+              </form>
               {traerFoliosEspecificos}
             </div>
           </div>
@@ -119,9 +167,6 @@ export const ModalFolio = () => {
             >
               Close
             </button>
-            {/* <button type="button" className="btn btn-primary">
-              Save changes
-            </button> */}
           </div>
         </div>
       </div>

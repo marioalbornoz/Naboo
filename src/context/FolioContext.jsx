@@ -18,6 +18,9 @@ const FolioProvider = (props) => {
   const [foliostotales, guardarContadorFoliosTotales] = useState(0)
   const [foliospriorityone, guardarContadorPriorityOne] = useState([]);
   const [foliosprioritytwo, guardarContadorPriorityTwo] = useState([]);
+  const [foliosmes, guardarFoliosMes] = useState([]);
+  const [mes, guardarMes] = useState(undefined);
+  const [filtrando, guardarFiltrando] = useState(false)
 
   //ejecutar llamado a la api
   useEffect(() => {
@@ -52,10 +55,11 @@ const FolioProvider = (props) => {
                 (dato) => ObtenerMes(dato.created) === mes
               )
               console.log(meses);
+              guardarFoliosMes(meses);
             }
             
           };
-          obtenerFoliosMes('octubre', allfolio.data.data);
+          obtenerFoliosMes(mes, allfolio.data.data);
         } catch (error) {
           console.error(error);
           if (error.status !== 401) {
@@ -67,7 +71,7 @@ const FolioProvider = (props) => {
       };
       obtenerListaFolio();
     }
-  }, [actualizar, ismounted]);
+  }, [actualizar, ismounted, mes]);
   return (
     <FolioContext.Provider
       value={{
@@ -83,6 +87,11 @@ const FolioProvider = (props) => {
         foliostotales,
         foliospriorityone,
         foliosprioritytwo,
+        foliosmes,
+        mes,
+        guardarMes,
+        filtrando,
+        guardarFiltrando
       }}
     >
       {props.children}

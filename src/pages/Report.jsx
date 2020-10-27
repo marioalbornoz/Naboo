@@ -2,7 +2,14 @@ import React, { useContext } from 'react'
 import { FolioContext } from '../context/FolioContext'
 
 export const Report = () => {
-    const {foliostotales,foliospriorityone, foliosprioritytwo } = useContext(FolioContext);
+    const {
+      foliostotales,
+      foliospriorityone,
+      foliosprioritytwo,
+      foliosmes,
+      mes,
+      guardarMes,
+    } = useContext(FolioContext);
     
     return (
       <div className="col-lg-9 col-md-8 mt-5 perfil">
@@ -25,7 +32,7 @@ export const Report = () => {
               </div>
             ) : null}
             {
-                
+
             }
           </div>
         </div>
