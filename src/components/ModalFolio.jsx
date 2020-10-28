@@ -14,7 +14,6 @@ export const ModalFolio = () => {
     guardarContadorTotal,
     guardarContadorAlumno,
     contadoralumno,
-    foliosmes,
     guardarMes,
     guardarPrioridad,
     foliosfiltrados

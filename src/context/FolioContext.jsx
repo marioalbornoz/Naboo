@@ -59,7 +59,7 @@ const FolioProvider = (props) => {
               guardarFoliosMes(meses);
             }
           };
-          //obtenerFoliosMes(mes, allfolio.data.data);
+          obtenerFoliosMes(mes, allfolio.data.data);
 
           const obtenerFoliosFiltrados = (folios, mes, priority) => {
             if (folios && priority === 0) {
