@@ -16,12 +16,13 @@ export const ModalFolio = () => {
     contadoralumno,
     foliosmes,
     guardarMes,
+    guardarPrioridad,
+    foliosfiltrados
   } = useContext(FolioContext);
   const { id, nombres, apellidos, rut, carrera } = indice;
   const { idUsuario } = useContext(AlumnosContext);
   const { perfil } = useContext(PerfilContext);
   const { guardarActuaizar, filtrando, guardarFiltrando } = useContext(FolioContext);
-
 
   // useEffect que se ejecuta cuando se actualizan los folios
 
@@ -57,7 +58,7 @@ export const ModalFolio = () => {
             <ContenidoFolio key={i} folioalumno={folioalumno} />
           ))
       ) : (
-        foliosmes.filter((foliofilter) => foliofilter.alumno.id === id)
+        foliosfiltrados.filter((foliofilter) => foliofilter.alumno.id === id)
         .map((folioalumno, i) => (
           <ContenidoFolio key={i} folioalumno={folioalumno} />
         )
@@ -83,6 +84,15 @@ export const ModalFolio = () => {
       }
       else guardarFiltrando(false)
   }
+    const obtenerDatosPrioridad= (e)=>{
+      console.log(e.target.value);
+      if((e.target.value)!==0){
+        guardarPrioridad(e.target.value);
+        guardarFiltrando(true);
+      }
+      else guardarFiltrando(false)
+      
+    }
   return (
     <div
       className="modal fade bd-example-modal-lg"
@@ -103,6 +113,7 @@ export const ModalFolio = () => {
               className="close"
               data-dismiss="modal"
               aria-label="Close"
+              
             >
               <span aria-hidden="true">×</span>
             </button>
@@ -127,7 +138,11 @@ export const ModalFolio = () => {
                 <label>Filtrar</label>
                 <div className="form-row">
                   <div className="form-group col-4">
-                    <select name="mes" onChange={obtenerDatosFilter} className="form-control form-control-sm">
+                    <select
+                      name="mes"
+                      onChange={obtenerDatosFilter}
+                      className="form-control form-control-sm"
+                    >
                       <option value="">Selecciona un mes</option>
                       <option value="enero">Enero</option>
                       <option value="febrero">Febrero</option>
@@ -149,9 +164,13 @@ export const ModalFolio = () => {
                     </select>
                   </div>
                   <div className="form-group col-4">
-                    <select className="form-control form-control-sm">
-                      <option value="1">Prioridad 1</option>
-                      <option value="2">Prioridad 2</option>
+                    <select
+                      className="form-control form-control-sm"
+                      onChange={obtenerDatosPrioridad}
+                    >
+                      <option value={0}>Sin Prioridad</option>
+                      <option value={1}>Prioridad 1</option>
+                      <option value={2}>Prioridad 2</option>
                     </select>
                   </div>
                 </div>
@@ -164,6 +183,11 @@ export const ModalFolio = () => {
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal"
+              onClick={
+                ()=>{
+                  
+                }
+              }
             >
               Close
             </button>

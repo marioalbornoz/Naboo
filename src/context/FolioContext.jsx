@@ -15,12 +15,14 @@ const FolioProvider = (props) => {
   const [actualizar, guardarActuaizar] = useState(false);
   const [contadortotal, guardarContadorTotal] = useState(0);
   const [contadoralumno, guardarContadorAlumno] = useState(0);
-  const [foliostotales, guardarContadorFoliosTotales] = useState(0)
+  const [foliostotales, guardarContadorFoliosTotales] = useState(0);
   const [foliospriorityone, guardarContadorPriorityOne] = useState([]);
   const [foliosprioritytwo, guardarContadorPriorityTwo] = useState([]);
   const [foliosmes, guardarFoliosMes] = useState([]);
+  const [foliosfiltrados, guardarFoliosFiltrados] = useState([]);
   const [mes, guardarMes] = useState(undefined);
-  const [filtrando, guardarFiltrando] = useState(false)
+  const [filtrando, guardarFiltrando] = useState(false);
+  const [prioridad, guardarPrioridad] = useState(0);
 
   //ejecutar llamado a la api
   useEffect(() => {
@@ -49,20 +51,67 @@ const FolioProvider = (props) => {
 
           // funcion que obtiene folios por mes
           const obtenerFoliosMes = (mes, folios) => {
-            console.log('mes context:', mes);
-            if(allfolio){
-                const meses = folios.filter(
+            console.log("mes context:", mes);
+            if (folios) {
+              const meses = folios.filter(
                 (dato) => ObtenerMes(dato.created) === mes
-              )
-              console.log(meses);
+              );
               guardarFoliosMes(meses);
             }
-            
           };
-          obtenerFoliosMes(mes, allfolio.data.data);
+          //obtenerFoliosMes(mes, allfolio.data.data);
+
+          const obtenerFoliosFiltrados = (folios, mes, priority) => {
+            if (folios && priority === 0) {
+              const meses = folios.filter(
+                (dato) => ObtenerMes(dato.created) === mes
+              );
+              guardarFoliosFiltrados(meses);
+            }
+            if (!mes && priority === 0) {
+              console.log("sin mes y prioridad 0");
+              guardarFiltrando(false)
+              const filtrado = folios.filter(
+                (dato) => dato.priority_one === true && ObtenerMes(dato.created) === ''
+              );
+              guardarFoliosFiltrados(filtrado);
+            }
+            if (!mes && priority === 1) {
+              console.log("sin mes y prioridad 1");
+              const filtrado = folios.filter(
+                (dato) => dato.priority_one === true
+              );
+              guardarFoliosFiltrados(filtrado);
+            }
+            if (mes && priority === 1) {
+              console.log("con mes y prioridad 1");
+              const filtrado = folios.filter(
+                (dato) =>
+                  dato.priority_one === true && ObtenerMes(dato.created) === mes
+              );
+              guardarFoliosFiltrados(filtrado);
+            }
+            if (!mes && priority === 2) {
+              console.log("sin mes y prioridad 2");
+              const filtrado = folios.filter(
+                (dato) => dato.priority_two === true
+              );
+              guardarFoliosFiltrados(filtrado);
+            }
+            if (mes && priority === 2) {
+              console.log("con mes y prioridad 2");
+              const filtrado = folios.filter(
+                (dato) =>
+                  dato.priority_two === true && ObtenerMes(dato.created) === mes
+              );
+              guardarFoliosFiltrados(filtrado);
+            }
+          };
+          obtenerFoliosFiltrados(allfolio.data.data, mes, parseInt(prioridad));
+
         } catch (error) {
           console.error(error);
-          if (error.status !== 401) {
+          if (error.status === 401) {
             alert("Tiempo de conexion agotado!");
             AuthHandler.logoutUser();
             window.location = Config.logoutPageUrl;
@@ -71,7 +120,7 @@ const FolioProvider = (props) => {
       };
       obtenerListaFolio();
     }
-  }, [actualizar, ismounted, mes]);
+  }, [actualizar, ismounted, mes, prioridad]);
   return (
     <FolioContext.Provider
       value={{
@@ -91,7 +140,10 @@ const FolioProvider = (props) => {
         mes,
         guardarMes,
         filtrando,
-        guardarFiltrando
+        guardarFiltrando,
+        prioridad,
+        guardarPrioridad,
+        foliosfiltrados,
       }}
     >
       {props.children}

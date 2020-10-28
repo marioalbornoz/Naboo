@@ -18,23 +18,23 @@ export function ObtenerMes(date){
     const fecha = dato.split("T")[0];
     const mes = fecha.split("-")[1];
     switch (mes) {
-        case 1:
+        case '1':
             return `enero`;
-        case 2:
+        case '2':
             return 'febrero';
-        case 3:
+        case '3':
             return `marzo`;
-        case 4:
+        case '4':
             return `abril`;
-        case 5:
+        case '5':
             return `mayo`;
-        case 6:
+        case '6':
             return `junio`;
-        case 7:
+        case '7':
             return 'julio';
-        case 8:
+        case '8':
             return `agosto`;
-        case 9:
+        case '9':
             return `septiembre`;
         case '10':
             return 'octubre';
@@ -44,6 +44,6 @@ export function ObtenerMes(date){
             return `diciembre`;
     
         default:
-            return;
+            return '';
     }
 }
