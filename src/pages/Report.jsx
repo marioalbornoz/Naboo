@@ -1,17 +1,37 @@
 import React, { useContext } from 'react'
 import { FolioContext } from '../context/FolioContext';
 import {Pie, Bar} from 'react-chartjs-2'
+import { ObtenerMes } from '../helpers';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export const Report = () => {
     const {
+      folios,
       foliostotales,
       foliospriorityone,
       foliosprioritytwo,
-    //   foliosmes,
-      // mes,
-      // guardarMes,
+      foliosmes,
+      mes,
+      guardarMes,
     } = useContext(FolioContext);
-
+    const [meses, guaardarMeses]=useState(
+      [
+        "Enero",
+        "Febrero",
+        "Marzo",
+        "Abril",
+        "Mayo",
+        "Junio",
+        "Julio",
+        "Agosto",
+        "Septiembre",
+        "Octubre",
+        "Noviembre",
+        "Diciembre",
+      ]
+    )
+    const [foliosdelmes, guardarcontFoliosMes] = useState([])
     const data = {
       labels:['Prioridad 1', 'Prioridad 2'],
       datasets:[{
@@ -47,7 +67,7 @@ export const Report = () => {
           borderWidth: 1,
           hoverBackgroundColor: "rgba(31, 111, 208, 1)",
           hoverBorderColor: "white",
-          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, foliostotales, 11, 12],
+          data: [1, 2, 3, 4, 5, 6, 7, 8, 9, foliosdelmes, 11, 12],
         },
       ],
     };
@@ -55,6 +75,20 @@ export const Report = () => {
       maintainAspectRatio:false,
       responsive:true
     }
+    const mesesfiltrados = datosBarra.labels.map(meses => (meses).toLowerCase())
+    
+    useEffect(()=>{
+      const obtenerContadorMes=(folios, mes)=>{
+        const contador = folios.filter(dato => ObtenerMes(dato.created)===mes)
+        guardarcontFoliosMes({
+          ...foliosdelmes, contador
+        })
+      }
+      mesesfiltrados.forEach(i =>{
+        console.log(i)
+        obtenerContadorMes(folios, i)
+      })
+    },[folios, mesesfiltrados, foliosdelmes])
     
     return (
       <div className="col-lg-9 col-md-8 mt-5 perfil">

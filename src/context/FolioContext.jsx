@@ -49,18 +49,6 @@ const FolioProvider = (props) => {
           // Se guardan todos los folios en el estado
           guardarFolioLista(allfolio.data.data);
 
-          // funcion que obtiene folios por mes
-          const obtenerFoliosMes = (mes, folios) => {
-            console.log("mes context:", mes);
-            if (folios) {
-              const meses = folios.filter(
-                (dato) => ObtenerMes(dato.created) === mes
-              );
-              guardarFoliosMes(meses);
-            }
-          };
-          obtenerFoliosMes(mes, allfolio.data.data);
-
           const obtenerFoliosFiltrados = (folios, mes, priority) => {
             if (folios && priority === 0) {
               const meses = folios.filter(
