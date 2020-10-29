@@ -18,7 +18,7 @@ const FolioProvider = (props) => {
   const [foliostotales, guardarContadorFoliosTotales] = useState(0);
   const [foliospriorityone, guardarContadorPriorityOne] = useState([]);
   const [foliosprioritytwo, guardarContadorPriorityTwo] = useState([]);
-  const [foliosmes, guardarFoliosMes] = useState([]);
+  // const [foliosmes, guardarFoliosMes] = useState([]);
   const [foliosfiltrados, guardarFoliosFiltrados] = useState([]);
   const [mes, guardarMes] = useState(undefined);
   const [filtrando, guardarFiltrando] = useState(false);
@@ -124,7 +124,6 @@ const FolioProvider = (props) => {
         foliostotales,
         foliospriorityone,
         foliosprioritytwo,
-        foliosmes,
         mes,
         guardarMes,
         filtrando,

@@ -47,3 +47,10 @@ export function ObtenerMes(date){
             return '';
     }
 }
+
+export function ObtenerNumMes(date){
+    const dato = date.split(".")[0];
+    const fecha = dato.split("T")[0];
+    const mes = fecha.split("-")[1];
+    return mes-1;
+}
