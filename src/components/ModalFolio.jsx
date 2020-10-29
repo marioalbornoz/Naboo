@@ -49,31 +49,35 @@ export const ModalFolio = () => {
 
   // Funcion que trae los folios
   const traerFoliosEspecificos =
-    perfil.rol === "jefe de carrera" || perfil.rol === "administrador" ? (
-      folios && !filtrando ? (
-        Object.values(folios)
-          .filter((foliofilter) => foliofilter.alumno.id === id)
+    perfil.rol === "jefe de carrera" || perfil.rol === "administrador"
+      ? folios && !filtrando
+        ? Object.values(folios)
+            .filter((foliofilter) => foliofilter.alumno.id === id)
+            .map((folioalumno, i) => (
+              <ContenidoFolio key={i} folioalumno={folioalumno} />
+            ))
+        : foliosfiltrados
+            .filter((foliofilter) => foliofilter.alumno.id === id)
+            .map((folioalumno, i) => (
+              <ContenidoFolio key={i} folioalumno={folioalumno} />
+            ))
+      : folios && !filtrando
+      ? Object.values(folios)
+          .filter(
+            (foliofilter) =>
+              foliofilter.alumno.id === id && foliofilter.user === idUsuario
+          )
           .map((folioalumno, i) => (
             <ContenidoFolio key={i} folioalumno={folioalumno} />
           ))
-      ) : (
-        foliosfiltrados.filter((foliofilter) => foliofilter.alumno.id === id)
-        .map((folioalumno, i) => (
-          <ContenidoFolio key={i} folioalumno={folioalumno} />
-        )
-      ))
-    ) : folios ? (
-      Object.values(folios)
-        .filter(
-          (foliofilter) =>
-            foliofilter.alumno.id === id && foliofilter.user === idUsuario
-        )
-        .map((folioalumno, i) => (
-          <ContenidoFolio key={i} folioalumno={folioalumno} />
-        ))
-    ) : (
-      <p>No hay folios</p>
-    );
+      : foliosfiltrados
+          .filter(
+            (foliofilter) =>
+              foliofilter.alumno.id === id && foliofilter.user === idUsuario
+          )
+          .map((folioalumno, i) => (
+            <ContenidoFolio key={i} folioalumno={folioalumno} />
+          ));
 
      // funcion para leer el contenido desde el filtrado
      const obtenerDatosFilter = (e) => {

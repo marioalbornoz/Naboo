@@ -17,7 +17,7 @@ export const Profesores = () => {
           {usuarios.data ? (
             usuarios.data.map((user) => (
                 <div className="card text-white usuarios shadow col-lg-3 col-md-5 col-sm-12" key={user.id}>
-                  <div className="card-header">{ (user.rol)? <p>{user.rol}</p> : console.log(user)}</div>
+                  <div className="card-header">{ (user.rol)? (user.rol) : console.log(user)}</div>
                   <div className="card-body cuerpo">
                     <img src={imagen} alt="hola" className="img-card" />
                     <h6 className="card-title pl-2">{user.username}</h6>
