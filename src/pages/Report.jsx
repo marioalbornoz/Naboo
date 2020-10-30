@@ -133,7 +133,7 @@ export const Report = () => {
       const nowmonth = now.getMonth();
       console.log(nowmonth);
       obtenerContadorMes(folios, nowmonth)
-    },[folios, datosBarra, foliosoctubre])
+    },[folios, foliosoctubre])
     
     return (
       <div className="col-lg-9 col-md-8 ml-4 mt-5 perfil">
