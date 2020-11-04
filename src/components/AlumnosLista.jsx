@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { AlumnosContext } from '../context/AlumnosContext';
 import { FolioContext } from '../context/FolioContext';
-
-// import "./modal";
 import { ModalFolio } from './ModalFolio';
 
 const CARRERA = localStorage.getItem('carrera')
@@ -24,13 +22,14 @@ export const AlumnosLista = () => {
   const handleChange = (e) => {
     guardarBusqueda(e.target.value);
   }
+
   return alumnos ? (
     <div className="col col-12">
       <form onSubmit={handleSearch} className="input-group mb-3 h-200">
         <input
           type="text"
           name="content"
-          onChange={ handleChange}
+          onChange={handleChange}
           className="form-control redondeado h-200"
           placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: Albornoz)"
           aria-label="Ingresa tu texto aqui"
@@ -54,7 +53,34 @@ export const AlumnosLista = () => {
             </tr>
           </thead>
           <tbody>
-            {CARRERA
+            {busqueda
+              ? alumnos
+                  .filter(
+                    (alumnofilter) =>
+                      alumnofilter.apellidos.toLowerCase() === busqueda
+                  )
+                  .map((alumno, i) => (
+                    <tr key={i}>
+                      <td>
+                        {alumno.nombres} {alumno.apellidos}
+                      </td>
+                      <td className="rut">{alumno.rut}</td>
+                      <td>{alumno.carrera.codigo}</td>
+                      <td>
+                        <button
+                          type="button"
+                          onClick={() => seleccionAlumno(alumno)}
+                          className="btn btn-secondary "
+                          data-toggle="modal"
+                          data-target="#exampleModalLong"
+                        >
+                          Folio
+                        </button>
+                        <ModalFolio />
+                      </td>
+                    </tr>
+                  ))
+              : CARRERA
               ? alumnos
                   .filter(
                     (alumnosfilter) =>

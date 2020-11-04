@@ -1,3 +1,6 @@
+*,*:after,*:before{
+    box-sizing: border-box;
+  }
 
 .login{
     border-radius: 15px;
@@ -13,8 +16,6 @@
 }
 .logo{
     height: 50px;
-    border: none;
-    border-radius: 32px;
 }
 .inputfolio{
     border:none !important;
