@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import { FolioContext } from '../context/FolioContext';
 import {Pie, Bar} from 'react-chartjs-2';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { ObtenerNumMes } from '../helpers';
 
 export const Report = () => {
@@ -12,19 +10,11 @@ export const Report = () => {
       foliospriorityone,
       foliosprioritytwo,
     } = useContext(FolioContext);
-   
-    const [foliosEnero, guardarcontFoliosEnero] = useState(0)
-    const [foliosfebrero, guardarcontFoliosFebrero] = useState(0)
-    const [foliosmarzo, guardarcontFoliosMarzo] = useState(0)
-    const [foliosabril, guardarcontFoliosAbril] = useState(0)
-    const [foliosmayo, guardarcontFoliosMayo] = useState(0)
-    const [foliosjunio, guardarcontFoliosJunio] = useState(0)
-    const [foliosjulio, guardarcontFoliosJulio] = useState(0)
-    const [foliosagosto, guardarcontFoliosAgosto] = useState(0)
-    const [foliosseptiembre, guardarcontFoliosSeptiembre] = useState(0)
-    const [foliosoctubre, guardarcontFoliosOctubre] = useState(0)
-    const [foliosnoviembre, guardarcontFoliosNoviembre] = useState(0) 
-    const [foliosdiciembre, guardarcontFoliosDiciembre] = useState(0)
+    
+    const contadorMes = (mes) => {
+      const foliosmes = folios.filter(foliosfilter => ObtenerNumMes(foliosfilter.created) === mes)
+      return foliosmes.length;
+    }
     const data = {
       labels:['Prioridad 1', 'Prioridad 2'],
       datasets:[{
@@ -61,18 +51,18 @@ export const Report = () => {
           hoverBackgroundColor: "rgba(31, 111, 208, 1)",
           hoverBorderColor: "white",
           data: [
-            foliosEnero,
-            foliosfebrero,
-            foliosmarzo,
-            foliosabril,
-            foliosmayo,
-            foliosjunio,
-            foliosjulio,
-            foliosagosto,
-            foliosseptiembre,
-            foliosoctubre,
-            foliosnoviembre,
-            foliosdiciembre,
+            contadorMes(0),
+            contadorMes(1),
+            contadorMes(2),
+            contadorMes(3),
+            contadorMes(4),
+            contadorMes(5),
+            contadorMes(6),
+            contadorMes(7),
+            contadorMes(8),
+            contadorMes(9),
+            contadorMes(10),
+            contadorMes(11),
           ],
         },
       ],
@@ -82,58 +72,6 @@ export const Report = () => {
       responsive:true
     }
     
-    
-    useEffect(()=>{
-      // const mesesfiltrados = datosBarra.labels.map(meses => (meses).toLowerCase())
-      const obtenerContadorMes=(folios, mes)=>{
-        const contador = folios.filter(dato => ObtenerNumMes(dato.created)===(mes))
-        switch ((mes)) {
-          case 0:
-            guardarcontFoliosEnero(contador.length)
-            return;
-          case 1:
-            guardarcontFoliosFebrero(contador.length)
-            return;
-          case 2:
-            guardarcontFoliosMarzo(contador.length)
-            return;
-          case 3:
-            guardarcontFoliosAbril(contador.length);
-            return;
-          case 4:
-            guardarcontFoliosMayo(contador.length)
-            return;
-          case 5:
-            guardarcontFoliosJunio(contador.length)
-            return;
-          case 6:
-            guardarcontFoliosJulio(contador.length)
-            return;
-          case 7:
-            guardarcontFoliosAgosto(contador.length)
-            return;
-          case 8:
-            guardarcontFoliosSeptiembre(contador.length)
-            return;
-          case 9:
-            guardarcontFoliosOctubre(contador.length);
-            return;
-          case 10:
-            guardarcontFoliosNoviembre(contador.length)
-            return;
-          case 11:
-            guardarcontFoliosDiciembre(contador.length)
-            return;
-
-          default:
-            return;
-        }
-      }
-      const now = new Date()
-      const nowmonth = now.getMonth();
-      console.log(nowmonth);
-      obtenerContadorMes(folios, nowmonth)
-    },[folios, foliosoctubre])
     
     return (
       <div className="col-lg-9 col-md-8 ml-4 mt-5 perfil">

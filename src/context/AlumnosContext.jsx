@@ -14,6 +14,8 @@ const AlumnosProvider = (props) => {
   const [alumnos, guardarAlumnosLista] = useState([]);
   const [idUsuario, guardarIdUsuario] = useState(null);
 
+  const [pagina, guardarPagina] = useState(1)
+
   const decodePayload = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -32,8 +34,8 @@ const AlumnosProvider = (props) => {
     if (ismounted) {
       try {
         const obtenerListaAlumnos = async () => {
-          const url = `http://localhost:8000/api/alumno/?page=1`;
-          const alumnos = await axios(url);
+          const url = `http://localhost:8000/api/alumno`;
+          const alumnos = await axios(`${url}/?page=${pagina}`);
           guardarAlumnosLista(alumnos.data.results);
         };
         obtenerListaAlumnos();
@@ -46,7 +48,7 @@ const AlumnosProvider = (props) => {
         }
       }
     }
-  }, [ismounted]);
+  }, [ismounted, pagina]);
   return (
     <AlumnosContext.Provider
       value={{
