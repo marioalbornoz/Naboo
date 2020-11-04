@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 export const usePagination = ( initialState = 1 ) => {
     
-    const [counter, setCounter] = useState(initialState); // 10
+    const [counter, setCounter] = useState(initialState); 
 
     const reset = () => {
         setCounter( initialState );
