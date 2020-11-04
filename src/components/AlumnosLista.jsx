@@ -8,7 +8,7 @@ import { ModalFolio } from './ModalFolio';
 const CARRERA = localStorage.getItem('carrera')
 
 export const AlumnosLista = () => {
-  const {alumnos} = useContext(AlumnosContext);
+  const {alumnos, increment, decrement, next, previous} = useContext(AlumnosContext);
   const {setindice} = useContext(FolioContext);
   const seleccionAlumno = (id) => {
     setindice(id);
@@ -93,6 +93,16 @@ export const AlumnosLista = () => {
                   ))}
             </tbody>
           </table>
+          {next ? (
+            <button className="btn btn-block" onClick={() => increment()}>
+              Siguiente
+            </button>
+          ) : null}
+          {previous ? (
+            <button className="btn btn-block" onClick={() => decrement()}>
+              Anterior
+            </button>
+          ) : null}
         </div>
       </div>
     ) : (
