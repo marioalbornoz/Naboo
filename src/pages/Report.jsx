@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { FolioContext } from '../context/FolioContext';
 import {Pie, Bar} from 'react-chartjs-2';
 import { ObtenerNumMes } from '../helpers';
+import MyLoader from '../components/MyLoader';
 
 export const Report = () => {
     const {
@@ -19,7 +20,7 @@ export const Report = () => {
       labels:['Prioridad 1', 'Prioridad 2'],
       datasets:[{
         data:[(foliospriorityone.length*100/foliostotales), (foliosprioritytwo.length*100/foliostotales)],
-        backgroundColor:['#FF5734', '#73B775'],
+        backgroundColor:['#FF5734', '#ffc107'],
 
       }]
     };
@@ -45,7 +46,7 @@ export const Report = () => {
       datasets: [
         {
           label: "Folios",
-          backgroundColor: "rgba(24, 87, 164, 1)",
+          backgroundColor: "#73B775",
           borderColor: "black",
           borderWidth: 1,
           hoverBackgroundColor: "rgba(31, 111, 208, 1)",
@@ -74,39 +75,110 @@ export const Report = () => {
     
     
     return (
-      <div className="col-lg-9 col-md-8 ml-4 mt-5 perfil">
+      <div className="col-lg-9 col-md-8 ml-4 mt-5 report">
         <div className="row">
           <div className="col">
             <h6 className="lead">Reportes</h6>
             {foliostotales && foliospriorityone && foliosprioritytwo ? (
               <>
                 <div className="row">
+                  <div className="col-lg-5  col-md-6 col-sm-12">
+                    <div className="card bg-light text-dark mimosa mb-4 white-text shadow">
+                      <div className="card-body">
+                        <div className="pull-right">
+                          <i className="fas fa-chart-line"></i>
+                          <p>Prioridad</p>
+                          <h4>{foliostotales}</h4>
+                        </div>
+                        <div class="card-body">
+                          <Pie data={data} options={opciones} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-3 col-md-6 col-sm-12">
+                    <div className="card bg-danger text-white mimosa mb-4 white-text shadow">
+                      <div className="card-body">
+                        <div className="pull-right">
+                          <i className="fas fa-chart-line"></i>
+                          <p>Prioridad 1</p>
+                          <h4>{foliospriorityone.length}</h4>
+                        </div>
+                        <div className="progress md-progress">
+                          <div
+                            className="progress-bar bg grey darken-3"
+                            role="progressbar"
+                            style={{
+                              width:
+                                (foliospriorityone.length * 100) /
+                                foliostotales,
+                            }}
+                            aria-valuenow={foliospriorityone.length}
+                            aria-valuemin="0"
+                            aria-valuemax={foliostotales}
+                          ></div>
+                        </div>
+                        <div class="card-body">
+                          <p class="mb-0">
+                            Ingresados hasta la fecha (
+                            {(foliospriorityone.length * 100) / foliostotales}
+                            %)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-lg-4 col-md-6 col-sm-12">
+                    <div className="card bg-warning text-white mimosa mb-4 white-text shadow">
+                      <div className="card-body">
+                        <div className="pull-right">
+                          <i className="fas fa-chart-line"></i>
+                          <p>Prioridad 2</p>
+                          <h4>{foliosprioritytwo.length}</h4>
+                        </div>
+                        <div className="progress md-progress">
+                          <div
+                            className="progress-bar bg grey darken-3"
+                            role="progressbar"
+                            style={{
+                              width:
+                                (foliosprioritytwo.length * 100) /
+                                foliostotales,
+                            }}
+                            aria-valuenow={foliosprioritytwo.length}
+                            aria-valuemin="0"
+                            aria-valuemax={foliostotales}
+                          ></div>
+                        </div>
+                        <div class="card-body">
+                          <p class="mb-0">
+                            Ingresados hasta la fecha (
+                            {(foliosprioritytwo.length * 100) / foliostotales}
+                            %)
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
                   <div className="col">
                     <div
-                      className="card my-5 shadow p-3 mb-5 bg-white rounded"
+                      className="card bg-light text-dark my-5 shadow p-3 mb-5 rounded"
                       style={{ width: "100% ", height: "300px" }}
                     >
                       <Bar data={datosBarra} options={optionBar} />
                     </div>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col">
-                    <div className="card shadow p-3 mb-5 bg-white rounded" style={{ width: "100% "}}>
-                      <p className="">
-                        Cantidad de reportes ingresados con prioridad 1:{" "}
-                        {foliospriorityone.length}
-                      </p>
-                      <p className="">
-                        Cantidad de reportes ingresados con prioridad 2:{" "}
-                        {foliosprioritytwo.length}
-                      </p>
-                      <Pie data={data} options={opciones} />
-                    </div>
+                    
                   </div>
                 </div>
               </>
-            ) : null}
+            ) : <MyLoader />}
             {}
           </div>
         </div>

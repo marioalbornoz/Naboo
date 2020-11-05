@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AlumnosContext } from '../context/AlumnosContext';
 import { FolioContext } from '../context/FolioContext';
 import { ModalFolio } from './ModalFolio';
+import MyLoader from './MyLoader';
 
 const CARRERA = localStorage.getItem('carrera')
 
@@ -31,13 +32,13 @@ export const AlumnosLista = () => {
           name="content"
           onChange={handleChange}
           className="form-control redondeado h-200"
-          placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: Albornoz)"
+          placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: albornoz castro)"
           aria-label="Ingresa tu texto aqui"
           aria-describedby="basic-addon2"
         />
         <div className="input-group-append">
           <button className="btn btn-primary redondeado" type="button">
-            Buscar
+            <i class="fas fa-search"></i>
           </button>
         </div>
       </form>
@@ -53,33 +54,63 @@ export const AlumnosLista = () => {
             </tr>
           </thead>
           <tbody>
-            {busqueda
-              ? alumnos
-                  .filter(
-                    (alumnofilter) =>
-                      alumnofilter.apellidos.toLowerCase() === busqueda
-                  )
-                  .map((alumno, i) => (
-                    <tr key={i}>
-                      <td>
-                        {alumno.nombres} {alumno.apellidos}
-                      </td>
-                      <td className="rut">{alumno.rut}</td>
-                      <td>{alumno.carrera.codigo}</td>
-                      <td>
-                        <button
-                          type="button"
-                          onClick={() => seleccionAlumno(alumno)}
-                          className="btn btn-secondary "
-                          data-toggle="modal"
-                          data-target="#exampleModalLong"
-                        >
-                          Folio
-                        </button>
-                        <ModalFolio />
-                      </td>
-                    </tr>
-                  ))
+            { busqueda
+              ? CARRERA
+                ? alumnos
+                    .filter(
+                      (alumnofilter) =>
+                        (alumnofilter.apellidos.toLowerCase() === busqueda ||
+                          alumnofilter.apellidos === busqueda) &&
+                        alumnofilter.carrera.codigo === parseInt(CARRERA)
+                    )
+                    .map((alumno, i) => (
+                      <tr key={i}>
+                        <td>
+                          {alumno.nombres} {alumno.apellidos}
+                        </td>
+                        <td className="rut">{alumno.rut}</td>
+                        <td>{alumno.carrera.codigo}</td>
+                        <td>
+                          <button
+                            type="button"
+                            onClick={() => seleccionAlumno(alumno)}
+                            className="btn btn-secondary "
+                            data-toggle="modal"
+                            data-target="#exampleModalLong"
+                          >
+                            Folio
+                          </button>
+                          <ModalFolio />
+                        </td>
+                      </tr>
+                    ))
+                : alumnos
+                    .filter(
+                      (alumnofilter) =>
+                        alumnofilter.apellidos.toLowerCase() === busqueda ||
+                        alumnofilter.apellidos === busqueda
+                    )
+                    .map((alumno, i) => (
+                      <tr key={i}>
+                        <td>
+                          {alumno.nombres} {alumno.apellidos}
+                        </td>
+                        <td className="rut">{alumno.rut}</td>
+                        <td>{alumno.carrera.codigo}</td>
+                        <td>
+                          <button
+                            type="button"
+                            onClick={() => seleccionAlumno(alumno)}
+                            className="btn btn-secondary "
+                            data-toggle="modal"
+                            data-target="#exampleModalLong"
+                          >
+                            Folio
+                          </button>
+                          <ModalFolio />
+                        </td>
+                      </tr>
+                    ))
               : CARRERA
               ? alumnos
                   .filter(
@@ -143,6 +174,6 @@ export const AlumnosLista = () => {
       </div>
     </div>
   ) : (
-    <p>No hay alumnos</p>
+    <MyLoader />
   );
 }

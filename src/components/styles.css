@@ -250,6 +250,9 @@ h6{
 }
 
 @media screen and (max-width: 600px) and (min-width: 382px){
+    .report {
+        margin-left: auto!important;
+    }
     .logo {
         padding-right: 50px;
     }
@@ -285,6 +288,9 @@ h6{
     }
 }
 @media screen and (max-width:381px) and (min-width: 200px){
+    .report {
+        margin-left: auto!important;
+    }
     .tarjeta{
         display: block;
         width: 100%;
