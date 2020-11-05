@@ -4,7 +4,8 @@ import { AlumnosContext } from '../context/AlumnosContext';
 import { AuthContext } from '../context/AuthContext';
 import Config from '../utils/Config';
 import Avatar from "../avatarHombre.png";
-import logo from '../logo.png';
+import logo from '../logow.png';
+import insignia from '../Logo_UTEM.png';
 import { PerfilContext } from '../context/PerfilContext';
 
 export const Navbar = () => {
@@ -16,7 +17,7 @@ export const Navbar = () => {
     guardarIsmounted(true);
   }, [guardarIsmounted]);
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light alineado">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark alineado">
       <button
         className="navbar-toggler"
         type="button"
@@ -30,6 +31,7 @@ export const Navbar = () => {
       </button>
       <a className="navbar-brand" href="/">
         <img src={logo} className="logo" alt="" />
+        <img src={insignia} height={35} className="insignia"/>
       </a>
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">

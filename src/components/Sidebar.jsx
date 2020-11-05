@@ -10,7 +10,7 @@ export const Sidebar = () => {
     return (
       <nav
         id="sidebarMenu"
-        className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        className="col-md-3 col-lg-2 d-md-block bg-light shadow sidebar collapse"
       >
         <div className="sidebar-sticky pt-3">
           <ul className="nav flex-column">
@@ -54,6 +54,7 @@ export const Sidebar = () => {
                 Inicio
               </a>
             </li>
+            <br/>
             <li className="nav-item">
               <a
                 className="nav-link text-secondary"

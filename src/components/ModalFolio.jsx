@@ -13,7 +13,6 @@ export const ModalFolio = () => {
     indice,
     guardarContadorTotal,
     guardarContadorAlumno,
-    contadoralumno,
     guardarMes,
     guardarPrioridad,
     foliosfiltrados
