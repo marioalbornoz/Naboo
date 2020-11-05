@@ -31,7 +31,7 @@ export const Navbar = () => {
       </button>
       <a className="navbar-brand" href="/">
         <img src={logo} className="logo" alt="" />
-        <img src={insignia} height={35} className="insignia"/>
+        <img src={insignia} height={35} alt="" className="insignia"/>
       </a>
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
