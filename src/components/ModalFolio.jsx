@@ -133,7 +133,7 @@ export const ModalFolio = () => {
                 <div className="datos">
                   {carrera ? <p>{carrera.nombre}</p> : null}
                   <p>Rut: {rut}</p>
-                  <p>Cantidad de folios ingresados: {contadoralumno}</p>
+                  {/* <p>Cantidad de folios ingresados: {contadoralumno}</p> */}
                 </div>
               </div>
               <InputFolio />
