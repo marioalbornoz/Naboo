@@ -34,7 +34,7 @@ export const AlumnosLista = () => {
           name="content"
           onChange={handleChange}
           className="form-control redondeado h-200"
-          placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: albornoz castro)"
+          placeholder="Usa este buscador para encotrar a quien buscas (Ejemplo: albornoz)"
           aria-label="Ingresa tu texto aqui"
           aria-describedby="basic-addon2"
         />
@@ -61,8 +61,7 @@ export const AlumnosLista = () => {
                 ? alumnos
                     .filter(
                       (alumnofilter) =>
-                        (alumnofilter.apellidos.toLowerCase() === busqueda ||
-                          alumnofilter.apellidos === busqueda) &&
+                        expresion.test(alumnofilter.apellidos) &&
                         alumnofilter.carrera.codigo === parseInt(CARRERA)
                     )
                     .map((alumno, i) => (
@@ -88,9 +87,7 @@ export const AlumnosLista = () => {
                     ))
                 : alumnos
                     .filter(
-                      (alumnofilter) =>
-                        alumnofilter.apellidos.toLowerCase() === busqueda ||
-                        alumnofilter.apellidos === busqueda
+                      (alumnofilter) => expresion.test(alumnofilter.apellidos)
                     )
                     .map((alumno, i) => (
                       <tr key={i}>
