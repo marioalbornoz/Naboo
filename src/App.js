@@ -19,6 +19,7 @@ import PerfilProvider from './context/PerfilContext';
 import { Perfil } from './pages/Perfil';
 import CarreraProvider from './context/CarreraContext';
 import { Report } from './pages/Report';
+import { Sesaes } from './pages/Sesaes';
 // import { Footer } from './components/Footer';
 
 
@@ -53,6 +54,11 @@ function App() {
                           exact
                           path="/perfil/:id"
                           component={Perfil}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/sesaes"
+                          component={Sesaes}
                         />
                         <PrivateRoute
                           exact

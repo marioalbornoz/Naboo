@@ -80,13 +80,25 @@
     margin: 3px 0px 35px 80px;
     height: 5.1rem ;
     width: 85% !important;
-    background-color: #1c61a7!important;
+    background-color: #343a40!important;
     border-radius: 15px;
     
 }
 .tituloPrincipal{
     padding-bottom: 10px!important;
 }
+.cardsesaes{
+    color: #e5e9e3;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(115, 183, 117, 1);
+}
+.fuenteCard{
+    font-weight: bold;
+}
+.blurry-text {
+    text-shadow: 0 0 32px white;
+    color: transparent;
+ }
 
 h6{
     text-transform: capitalize;
@@ -208,7 +220,7 @@ h6{
         margin: 3px 0px 35px 30px;
         height: 5.1rem ;
         width: 85% !important;
-        background-color: #1c61a7!important;
+        background-color: #343a40!important;
         border-radius: 15px;
         
     }

@@ -54,7 +54,6 @@ export const Sidebar = () => {
                 Inicio
               </a>
             </li>
-            <br/>
             <li className="nav-item">
               <a
                 className="nav-link text-secondary"
@@ -81,7 +80,7 @@ export const Sidebar = () => {
             </li>
 
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
+              <a className="nav-link text-secondary" href="/sesaes">
                 <i className="fas fa-briefcase-medical mr-2" />
                 Sesaes
               </a>

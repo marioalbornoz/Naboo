@@ -87,7 +87,6 @@ export const ModalFolio = () => {
       else guardarFiltrando(false)
   }
     const obtenerDatosPrioridad= (e)=>{
-      console.log(e.target.value);
       if((e.target.value)!==0){
         guardarPrioridad(e.target.value);
         guardarFiltrando(true);

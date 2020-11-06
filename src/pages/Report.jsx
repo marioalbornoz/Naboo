@@ -45,7 +45,7 @@ export const Report = () => {
       ],
       datasets: [
         {
-          label: "Folios",
+          label: "Cantidad de folios",
           backgroundColor: "#73B775",
           borderColor: "black",
           borderWidth: 1,
@@ -78,7 +78,7 @@ export const Report = () => {
       <div className="col-lg-9 col-md-8 ml-4 mt-5 report">
         <div className="row">
           <div className="col">
-            <h6 className="lead">Reportes</h6>
+            <h6 className="lead mb-4">Reportes</h6>
             {foliostotales && foliospriorityone && foliosprioritytwo ? (
               <>
                 <div className="row">
@@ -87,7 +87,7 @@ export const Report = () => {
                       <div className="card-body">
                         <div className="pull-right">
                           <i className="fas fa-chart-line"></i>
-                          <p>Prioridad</p>
+                          <p>Cantidad de folios</p>
                           <h4>{foliostotales}</h4>
                         </div>
                         <div class="card-body">
@@ -121,7 +121,7 @@ export const Report = () => {
                         <div class="card-body">
                           <p class="mb-0">
                             Ingresados hasta la fecha (
-                            {(foliospriorityone.length * 100) / foliostotales}
+                            {Math.round((foliospriorityone.length * 100) / foliostotales)}
                             %)
                           </p>
                         </div>
@@ -153,7 +153,7 @@ export const Report = () => {
                         <div class="card-body">
                           <p class="mb-0">
                             Ingresados hasta la fecha (
-                            {(foliosprioritytwo.length * 100) / foliostotales}
+                            {Math.round((foliosprioritytwo.length * 100) / foliostotales)}
                             %)
                           </p>
                         </div>

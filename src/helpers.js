@@ -54,3 +54,17 @@ export function ObtenerNumMes(date){
     const mes = fecha.split("-")[1];
     return mes-1;
 }
+
+
+export const colorTargetHistorial = (folio) => {
+    let clase;
+    const {priority_one, priority_two} = folio;
+    if (priority_one===true) {
+      clase = "alert alert-danger";
+    } else if (priority_two === true ) {
+      clase = "alert alert-warning";
+    } else {
+      clase = "alert alert-warning";
+    }
+    return clase;
+  };

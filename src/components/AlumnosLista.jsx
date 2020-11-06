@@ -24,6 +24,8 @@ export const AlumnosLista = () => {
     guardarBusqueda(e.target.value);
   }
 
+  let expresion = new RegExp(`${busqueda}.*`, "i");
+
   return alumnos ? (
     <div className="col col-12">
       <form onSubmit={handleSearch} className="input-group mb-3 h-200">
