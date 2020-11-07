@@ -2,38 +2,11 @@ import React, {  useContext } from 'react'
 import { UserContext } from '../context/UserContext';
 import imagen from "../perfil-clase.png";
 import { Spinner } from '../components/Spinner';
+import { rolUsuario } from '../helpers';
 
 export const Profesores = () => {
 
     const { usuarios } = useContext(UserContext);
-
-    const rolUsuario = (rol) => {
-        switch (rol) {
-          case 1:
-            return "Administrador";
-          case 2:
-            return "Decano";
-          case 3:
-            return "Director escuela";
-          case 4:
-            return "Jefe Carrera";
-          case 5:
-            return "Sesaes";
-          case 6:
-            return "Deporte";
-          case 7:
-            return "Academico";
-          case 8:
-            return "Otro";
-          case 9:
-            return "Bienestar";
-          case undefined:
-            return "No definido";
-          default:
-            return "No definido";
-        }
-  
-    }
     
     return (
       <div className="col-lg-9 col-md-9 col-sm-12 ">
