@@ -55,6 +55,61 @@ export function ObtenerNumMes(date){
     return mes-1;
 }
 
+export const rolUsuario = (rol) => {
+    switch (rol) {
+      case 1:
+        return "Administrador";
+      case 2:
+        return "Decano";
+      case 3:
+        return "Director escuela";
+      case 4:
+        return "Jefe Carrera";
+      case 5:
+        return "Sesaes";
+      case 6:
+        return "Deporte";
+      case 7:
+        return "Academico";
+      case 8:
+        return "Otro";
+      case 9:
+        return "Bienestar";
+      case undefined:
+        return "No definido";
+      default:
+        return "No definido";
+    }
+
+}
+
+export const carreraUsuario = (carrera) => {
+    switch (carrera) {
+      case 1:
+        return "Informatica";
+      case 2:
+        return "Ing. Civil en Computacion";
+      case 3:
+        return "Director escuela";
+      case 4:
+        return "Jefe Carrera";
+      case 5:
+        return "Sesaes";
+      case 6:
+        return "Deporte";
+      case 7:
+        return "Academico";
+      case 8:
+        return "Otro";
+      case 9:
+        return "Bienestar";
+      case undefined:
+        return "No definido";
+      default:
+        return "No definido";
+    }
+
+}
 
 export const colorTargetHistorial = (folio) => {
     let clase;
@@ -68,3 +123,10 @@ export const colorTargetHistorial = (folio) => {
     }
     return clase;
   };
+
+export const obtenerCarreraCodigo = (id) => {
+  if (id) {
+    localStorage.setItem("carrera", id);
+  }
+  return;
+};
