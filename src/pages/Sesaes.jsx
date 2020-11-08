@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { TarjetaContenidos } from '../components/TarjetaContenidos';
 import { FolioContext } from '../context/FolioContext'
 import { PerfilContext } from '../context/PerfilContext';
 import { colorTargetHistorial } from '../helpers';
@@ -18,21 +19,7 @@ export const Sesaes = () => {
         <h4 className="lead m-4 animate__animated ">Historial SESAES</h4>
         {rol === 5
           ? foliosUserSesaes.map((folio, i) => (
-              <div
-                key={i}
-                className={`card shadow m-3 pl-4 pt-3 animate__animated animate__backInLeft ${colorTargetHistorial(
-                  folio
-                )}`}
-              >
-                <p className="">
-                  {" "}
-                  <span className="fuenteCard">{folio.usuario}</span> :{" "}
-                  <span className="">{folio.content}</span>
-                  <small className="small">
-                    ({folio.alumno.nombres} {folio.alumno.apellidos})
-                  </small>
-                </p>
-              </div>
+              <TarjetaContenidos key={i} folio={folio} oculto ={null} />
             ))
           : foliosUserSesaes.map((folio, i) => (
               <div
@@ -43,7 +30,12 @@ export const Sesaes = () => {
               >
                 <p className="">
                   {" "}
-                  <span className="fuenteCard">{folio.usuario}</span> { !folio.priority_one ? folio.content : <>Este contenido esta oculto{" "}</>} 
+                  <span className="fuenteCard">{folio.usuario}</span>{" "}
+                  {!folio.priority_one ? (
+                    folio.content
+                  ) : (
+                    <>Este contenido esta oculto </>
+                  )}
                   <small className="small">
                     ({folio.alumno.nombres} {folio.alumno.apellidos})
                   </small>
