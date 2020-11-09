@@ -40,7 +40,7 @@ export const AlumnosLista = () => {
         />
         <div className="input-group-append">
           <button className="btn btn-primary redondeado" type="button">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </button>
         </div>
       </form>

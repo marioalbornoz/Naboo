@@ -67,17 +67,12 @@ export const Sidebar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link text-secondary" href="/profesores">
+              <a className="nav-link text-secondary" href="/academicos">
                 <i className="fas fa-chalkboard-teacher mr-2" />
                 Academicos
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link text-secondary" href="!#">
-                <i className="fas fa-user-alt mr-2" />
-                Funcionarios
-              </a>
-            </li>
+            
 
             <li className="nav-item">
               <a className="nav-link text-secondary" href="/sesaes">
@@ -92,6 +87,13 @@ export const Sidebar = () => {
                 Reportes
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link text-secondary" href="/usuarios">
+                <i className="fas fa-user-alt mr-2" />
+                Funcionarios activos
+              </a>
+            </li>
+            
             <li className="nav-item mt-4 pt-4">
               <a className="nav-link text-secondary" href="!#">
                 Perfil

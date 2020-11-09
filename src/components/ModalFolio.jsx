@@ -48,7 +48,7 @@ export const ModalFolio = () => {
 
   // Funcion que trae los folios
   const traerFoliosEspecificos =
-    perfil.rol === "jefe de carrera" || perfil.rol === "administrador"
+    perfil.rol === 4 || perfil.rol === 1 || perfil.rol === 2
       ? folios && !filtrando
         ? Object.values(folios)
             .filter((foliofilter) => foliofilter.alumno.id === id)

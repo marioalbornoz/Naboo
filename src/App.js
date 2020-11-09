@@ -20,6 +20,7 @@ import { Perfil } from './pages/Perfil';
 import CarreraProvider from './context/CarreraContext';
 import { Report } from './pages/Report';
 import { Sesaes } from './pages/Sesaes';
+import { Academicos } from './pages/Academicos';
 // import { Footer } from './components/Footer';
 
 
@@ -47,8 +48,8 @@ function App() {
                         />
                         <PrivateRoute
                           exact
-                          path="/profesores"
-                          component={Profesores}
+                          path="/academicos"
+                          component={Academicos}
                         />
                         <PrivateRoute
                           exact
@@ -64,6 +65,11 @@ function App() {
                           exact
                           path="/reportes"
                           component={Report}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/usuarios"
+                          component={Profesores}
                         />
                         <PrivateRoute exact path="/" component={ContenrHome} />
                       </Switch>

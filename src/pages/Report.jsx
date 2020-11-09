@@ -90,7 +90,7 @@ export const Report = () => {
                           <p>Cantidad de folios</p>
                           <h4>{foliostotales}</h4>
                         </div>
-                        <div class="card-body">
+                        <div className="card-body">
                           <Pie data={data} options={opciones} />
                         </div>
                       </div>
@@ -118,8 +118,8 @@ export const Report = () => {
                             aria-valuemax={foliostotales}
                           ></div>
                         </div>
-                        <div class="card-body">
-                          <p class="mb-0">
+                        <div className="card-body">
+                          <p className="mb-0">
                             Ingresados hasta la fecha (
                             {Math.round((foliospriorityone.length * 100) / foliostotales)}
                             %)
@@ -150,8 +150,8 @@ export const Report = () => {
                             aria-valuemax={foliostotales}
                           ></div>
                         </div>
-                        <div class="card-body">
-                          <p class="mb-0">
+                        <div className="card-body">
+                          <p className="mb-0">
                             Ingresados hasta la fecha (
                             {Math.round((foliosprioritytwo.length * 100) / foliostotales)}
                             %)

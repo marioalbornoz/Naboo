@@ -90,9 +90,9 @@ export const carreraUsuario = (carrera) => {
       case 2:
         return "Ing. Civil en Computacion";
       case 3:
-        return "Director escuela";
+        return "Ing. Civil en Ciencia de Datos";
       case 4:
-        return "Jefe Carrera";
+        return "ninguna";
       case 5:
         return "Sesaes";
       case 6:
@@ -108,6 +108,34 @@ export const carreraUsuario = (carrera) => {
       default:
         return "No definido";
     }
+
+}
+
+export const facultadUsuario = (carrera) => {
+  switch (carrera) {
+    case 1:
+      return "Informatica";
+    case 2:
+      return "Ing. Civil en Computacion";
+    case 3:
+      return "Director escuela";
+    case 4:
+      return "ninguna";
+    case 5:
+      return "Sesaes";
+    case 6:
+      return "Deporte";
+    case 7:
+      return "Academico";
+    case 8:
+      return "Otro";
+    case 9:
+      return "Bienestar";
+    case undefined:
+      return "No definido";
+    default:
+      return "No definido";
+  }
 
 }
 

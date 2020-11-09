@@ -21,7 +21,7 @@ export const Profesores = () => {
                 key={user.id}
               >
                 <div className="card-header">
-                  {user ? rolUsuario(user.rol) : console.log(user)}
+                  {user ? rolUsuario(user.rol) : null}
                 </div>
                 <div className="card-body cuerpo">
                   <img src={imagen} alt="hola" className="img-card" />
