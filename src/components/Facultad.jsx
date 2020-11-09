@@ -46,7 +46,7 @@ export const Facultad = ({carreras, nombrecarrera}) => {
                 ? carerasarray
                     .filter(
                       (carrerafilter) =>
-                        carrerafilter.nombre === carreraUsuario(carrera)
+                        carrerafilter.nombre === carreraUsuario(carrera) || (carrerafilter.nombre !== 'ninguna' && carrerafilter.facultad!=='Todas')
                     )
                     .map((carrera) => (
                       <CarreraCard carrera={carrera} key={carrera.id} />
