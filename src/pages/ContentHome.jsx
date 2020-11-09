@@ -20,17 +20,6 @@ export const ContenrHome = () => {
     return (
       <div id="content" className="p-4 p-md-5 col-lg-10 col-md-9">
         <h6 className="mb-4 lead">Folio Estudiantil</h6>
-        {/* {facultades
-          ? facultades.filter(facultadfilter=> facultadfilter.nombre !== 'Todas').map((facultad) => (
-              <Facultad
-                key={facultad.id}
-                carreras={carreras}
-                nombrecarrera={facultad.nombre}
-              />
-            ))
-          : facultadUsuario ? facultadUsuario.map(facultad => (
-            <Facultad key={facultad.id} carreras={carreras} nombrecarrera={facultad.nombre} /> 
-          )):null } */}
 
         {facultadUsuario.length !== 0 ? (
           facultadUsuario[0].nombre !== "Todas" ? (
