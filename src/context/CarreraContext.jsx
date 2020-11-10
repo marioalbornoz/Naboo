@@ -13,8 +13,8 @@ export const CarreraContext = createContext();
 const CarreraProvider = (props) => {
   const {ismounted} = useContext(AuthContext);
   const [facultades, guardarFacultad] = useState([])
-    const [carreras, guardarCarrera] = useState([])
-
+  const [escuelas, guardarEscuelas] = useState([])
+  const [carreras, guardarCarrera] = useState([])
     
     //ejecutar llamado a la api
     useEffect(()=> {
@@ -28,6 +28,28 @@ const CarreraProvider = (props) => {
             guardarFacultad(facultades.data);
           }
           obtenerFacultades();
+        } catch (error) {
+          console.error(error);
+          AuthHandler.logoutUser();
+          window.location = Config.logoutPageUrl;
+          
+        }
+      }
+      
+      
+    }, [ismounted])
+
+    useEffect(()=> {
+      if(ismounted){
+        try {
+          const obtenerEscuelas = async() => {
+            const escuelas = await axios(Config.escuelas, {
+              headers: {
+                Authorization: `JWT ${localStorage.getItem("token")}`,
+              }})
+            guardarEscuelas(escuelas.data);
+          }
+          obtenerEscuelas();
         } catch (error) {
           console.error(error);
           AuthHandler.logoutUser();
@@ -61,6 +83,7 @@ const CarreraProvider = (props) => {
         <CarreraContext.Provider
             value={{
                 carreras,
+                escuelas,
                 facultades,
             }}
             >

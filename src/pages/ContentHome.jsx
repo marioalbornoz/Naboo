@@ -8,14 +8,12 @@ import { PerfilContext } from '../context/PerfilContext'
 
 export const ContenrHome = () => {
 
-  const {carreras, facultades} = useContext(CarreraContext)
+  const {facultades} = useContext(CarreraContext)
   const { perfil } = useContext(PerfilContext);
     
     const facultadUsuario = facultades.filter( facultad => facultad.nombre===perfil.facultad)
     const todasFacultades = facultades.filter(facultad => facultad.nombre !== 'Todas')
-    console.log('====================================');
-    console.log(Object.values(todasFacultades));
-    console.log('====================================');
+
     
     return (
       <div id="content" className="p-4 p-md-5 col-lg-10 col-md-9">
@@ -26,16 +24,16 @@ export const ContenrHome = () => {
             facultadUsuario.map((facultad) => (
               <Facultad
                 key={facultad.id}
-                carreras={carreras}
-                nombrecarrera={facultad.nombre}
+                nombreFacultad={facultad.nombre}
+                perfil={perfil}
               />
             ))
           ) : (
             todasFacultades.map((facultad) => (
               <Facultad
                 key={facultad.id}
-                carreras={carreras}
-                nombrecarrera={facultad.nombre}
+                nombreFacultad={facultad.nombre}
+                perfil ={perfil}
               />
             ))
           )

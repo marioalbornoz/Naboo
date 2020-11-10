@@ -1,59 +1,44 @@
 import React, { useContext } from 'react'
 import { useEffect } from 'react'
-import { useState } from 'react'
-import { PerfilContext } from '../context/PerfilContext'
+import { useState } from 'react';
+import { CarreraContext } from '../context/CarreraContext';
 import { carreraUsuario } from '../helpers'
+import Escuelas from './Escuelas';
 import { CarreraCard } from './CarreraCard'
 // import { Spinner } from './Spinner'
 
-export const Facultad = ({carreras, nombrecarrera}) => {
+export const Facultad = ({nombreFacultad, perfil}) => {
     
-  const perfil = useContext(PerfilContext);
-  const { carrera, escuela, facultad } = perfil.perfil;
-  const [carerasarray, guardarCarreras] = useState([]);
+  const {carreras, escuelas, facultades} = useContext(CarreraContext)
+  const { carrera,escuela, rol } = perfil;
+  const nombreEscueladelUsuario = perfil.escuela;
 
-    // const carrerasByFacultad  = carreras.filter(carreraFilter=> carreraFilter.facultad === facultad)
+  // variable que guarda todas las escuelas por facultad, si la escuela es ninguna manda todas las escuelas de lo contrario solo arroja la escuela del director
+  const escuelaDeEstaFacultad =
+    escuela === "Ninguna"
+      ? escuelas.filter(
+          (escuelafilter) => escuelafilter.facultad === nombreFacultad
+        )
+      : escuelas.filter(
+          (escuelafilter) =>
+            escuelafilter.nombre === nombreEscueladelUsuario && (rol === 3 || rol === 4)
+        );
     
-    useEffect(() => {
-      try {
-        const carrerasByFacultades = (nombre) => {
-          console.log(nombrecarrera);
-          const carrerasFacultad = carreras.filter(
-            (carreraFilter) => carreraFilter.facultad === nombre
-          );
-          guardarCarreras(carrerasFacultad);
-        };
-        carrerasByFacultades(nombrecarrera);
-      } catch (error) {
-        console.error(error);
-      }
-    }, [nombrecarrera, carreras]);
-
-
-
     return (
       <div className="row">
         <div className="col">
           <div className="row">
             <h4 className="lead m-4">
-              Carreas de la facultad de {nombrecarrera}
+              Carreras de la facultad de {nombreFacultad}
             </h4>
           </div>
           <div className="col">
             {" "}
             <div className="row">
-              {carerasarray && carrera
-                ? carerasarray
-                    .filter(
-                      (carrerafilter) =>
-                        carrerafilter.nombre === carreraUsuario(carrera) || (carrerafilter.nombre !== 'ninguna' && carrerafilter.facultad!=='Todas')
-                    )
-                    .map((carrera) => (
-                      <CarreraCard carrera={carrera} key={carrera.id} />
-                    ))
-                : carerasarray.map((carrera) => (
-                    <CarreraCard carrera={carrera} key={carrera.id} />
-                  ))}
+              <Escuelas
+                escuela={escuelaDeEstaFacultad}
+                carreraUsuario={carrera}
+              />
             </div>
           </div>
         </div>
