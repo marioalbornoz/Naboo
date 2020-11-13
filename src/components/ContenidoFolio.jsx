@@ -1,19 +1,20 @@
 import React from 'react'
 import "./styles.css";
-import perfil from "../avatarHombre.png"
+import imgperfil from "../avatarHombre.png"
 import { formatofecha } from '../helpers';
+import { useContext } from 'react';
+import { PerfilContext } from '../context/PerfilContext';
 // import { FolioContext } from '../context/FolioContext';
 
 export const ContenidoFolio = ({folioalumno}) => {
-
-  
-  
+  const {perfil} = useContext(PerfilContext)
+    console.log(folioalumno);
     return (
       <div className="tarjeta shadow mb-3">
         <div className="picture">
           <img
             className="imagen"
-            src={perfil}
+            src={imgperfil}
             alt={`foto de ${folioalumno.alumno}`}
           />
         </div>
@@ -36,7 +37,7 @@ export const ContenidoFolio = ({folioalumno}) => {
 
             <div className="row contenido">
               <div className="col">
-                <p className="text-justify">{folioalumno.content}</p>
+              {folioalumno.rol ==="sesaes" && perfil.rol!==5 ? folioalumno.priority_one ?(<p className="text-justify text-muted"> Contenido confidencial</p>):<p className="text-justify ">{folioalumno.content}</p> : <p className="text-justify">{folioalumno.content}</p>}
               </div>
             </div>
           </div>

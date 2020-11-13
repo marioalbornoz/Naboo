@@ -5,7 +5,7 @@ import { obtenerCarreraCodigo } from '../helpers';
 export const CarreraCard = ({codigo, nombre}) => {
     return (
       <div
-        className="card shadow col-lg-5 col-md-6 col-sm-12 card-carrera redondeado m-2"
+        className="card shadow col-xl-3 col-lg-5 col-md-5 col-sm-12 card-carrera redondeado m-2"
       >
         <img className="card-img-top" src={FotoCarreras} alt="" />
         <div className="card-body codigocarrera">

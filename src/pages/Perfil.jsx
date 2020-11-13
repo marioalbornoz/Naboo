@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { PerfilContext } from '../context/PerfilContext';
+import { rolUsuario } from '../helpers';
 import img from '../perfil-clase.png';
 export const Perfil = () => {
   const { perfil } = useContext(PerfilContext);
-    const {username, email, is_decano, rol} = perfil;
+    const {username, email, rol} = perfil;
     
     return perfil ? (
       <div className="col-lg-9 col-md-8 mt-5 perfil">
@@ -26,14 +27,14 @@ export const Perfil = () => {
             ) : null}
             <p className="lead">
               <span className="font-weight-bold">Rol de Usuario</span>:{" "}
-              {rol}
+              {rolUsuario(rol)}
             </p>
             <p className="lead">
               <span className="font-weight-bold">Correo</span>: {email}
             </p>
-            {
+            {/* {
               is_decano ? <p>Perfil Decano</p> : <p>Permisos normales</p>
-            }
+            } */}
           </div>
         </div>
       </div>

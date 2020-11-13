@@ -48,7 +48,7 @@ export const ModalFolio = () => {
 
   // Funcion que trae los folios
   const traerFoliosEspecificos =
-    perfil.rol === 4 || perfil.rol === 1 || perfil.rol === 2
+    perfil.rol === 4 || perfil.rol === 1
       ? folios && !filtrando
         ? Object.values(folios)
             .filter((foliofilter) => foliofilter.alumno.id === id)
@@ -162,6 +162,7 @@ export const ModalFolio = () => {
                   <div className="form-group col-4">
                     <select className="form-control form-control-sm">
                       <option>2020</option>
+                      
                     </select>
                   </div>
                   <div className="form-group col-4">

@@ -42,8 +42,8 @@ export const Navbar = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/profesores">
-              Profesor
+            <a className="nav-link" href="/reportes">
+              Reportes
             </a>
           </li>
           <li className="nav-item">
@@ -82,9 +82,7 @@ export const Navbar = () => {
               className="dropdown-menu shadow"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a className="dropdown-item" href="!#">
-                Acerca
-              </a>
+              
               <a className="dropdown-item" href={`/perfil/${id}`}>
                 Perfil
               </a>

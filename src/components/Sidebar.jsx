@@ -2,11 +2,14 @@ import React, { useContext } from 'react'
 import { AlumnosContext } from '../context/AlumnosContext';
 import { UserContext } from '../context/UserContext';
 import Avatar from "../avatarHombre.png";
+import { PerfilContext } from '../context/PerfilContext';
 
 export const Sidebar = () => {
 
   const { idUsuario } = useContext(AlumnosContext);
   const { usuarios } = useContext(UserContext);
+  const {perfil} = useContext(PerfilContext)
+  const {id} = perfil;
     return (
       <nav
         id="sidebarMenu"
@@ -95,7 +98,7 @@ export const Sidebar = () => {
             </li>
             
             <li className="nav-item mt-4 pt-4">
-              <a className="nav-link text-secondary" href="!#">
+              <a className="nav-link text-secondary" href={`/perfil/${id}`}>
                 Perfil
               </a>
             </li>

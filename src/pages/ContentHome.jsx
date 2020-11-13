@@ -11,8 +11,10 @@ export const ContenrHome = () => {
   const {facultades} = useContext(CarreraContext)
   const { perfil } = useContext(PerfilContext);
     
-    const facultadUsuario = facultades.filter( facultad => facultad.nombre===perfil.facultad)
-    const todasFacultades = facultades.filter(facultad => facultad.nombre !== 'Todas')
+  const facultadUsuario = facultades.filter(
+    (facultad) => facultad.nombre === perfil.facultadnombre
+  );
+  const todasFacultades = facultades.filter(facultad => facultad.nombre !== 'Todas')
 
     
     return (

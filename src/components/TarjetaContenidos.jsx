@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { PerfilContext } from '../context/PerfilContext';
 import { colorTargetHistorial } from '../helpers';
 import LoaderTargetContent from './LoaderTargetContent';
 // import LoaderTargetContent from '../components/LoaderTargetContent';
 
 export const TarjetaContenidos = ({folio, oculto}) => {
+  
+  const {perfil} = useContext(PerfilContext)
+  console.log(perfil, folio);
   const [loader, guardarLoader]=useState(false)
   useEffect(()=>{
     setTimeout(()=>{
@@ -21,7 +25,7 @@ export const TarjetaContenidos = ({folio, oculto}) => {
         <p className="">
           {" "}
           <span className="fuenteCard">{folio.usuario}</span> :{" "}
-          {!oculto ? (
+          {!oculto && (folio.usuario===perfil.username) ? (
             <span className="">{folio.content}</span>
           ) : (
             <span>"Contenido sensible, ha sido ocultado."</span>

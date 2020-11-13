@@ -21,6 +21,7 @@ import CarreraProvider from './context/CarreraContext';
 import { Report } from './pages/Report';
 import { Sesaes } from './pages/Sesaes';
 import { Academicos } from './pages/Academicos';
+import { NuevoUser } from './components/NuevoUser';
 // import { Footer } from './components/Footer';
 
 
@@ -70,6 +71,11 @@ function App() {
                           exact
                           path="/usuarios"
                           component={Profesores}
+                        />
+                        <PrivateRoute
+                          exact
+                          path="/usuarios/agregar"
+                          component={NuevoUser}
                         />
                         <PrivateRoute exact path="/" component={ContenrHome} />
                       </Switch>

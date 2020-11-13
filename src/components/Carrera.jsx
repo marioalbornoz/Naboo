@@ -4,7 +4,7 @@ import { CarreraCard } from './CarreraCard'
 export const Carrera = ({escuelaNombre, carrerasMostradas}) => {
     
     return (
-      <div>
+      <div className="row">
         {carrerasMostradas
           .filter((carrerafilter) => carrerafilter.escuela === escuelaNombre)
           .map((carrera) => (
