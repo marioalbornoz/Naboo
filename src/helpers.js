@@ -59,6 +59,13 @@ export function carreraPorEscuelas(escuela, carreras){
   const carreraescuela=carreras.filter( carrera => carrera.escuela === (escuela));
   return carreraescuela;
 }
+// funcion que entrega escuela por facultad
+export function escuelasPorFacultad(escuelas, id){
+  parseInt(id)
+  console.log(id);
+  const array = escuelas.filter(escuela => escuela.facultadid === id)
+  return array;
+}
 
 export const rolUsuario = (rol) => {
     switch (rol) {
