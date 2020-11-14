@@ -16,7 +16,7 @@ export const Carreras = ({carreras, escuelaNombre}) => {
           );
     
     return (
-      <div>
+      <div className="row ml-2">
         {carrerasMostradas
           ? escuelas.map((escuela) => (
               <Carrera

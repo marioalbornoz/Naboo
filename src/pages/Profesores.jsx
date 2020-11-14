@@ -10,8 +10,11 @@ export const Profesores = () => {
     
     return (
       <div className="col-lg-9 col-md-9 col-sm-12 ">
-        <div className="title m-5">
-          <h4 className="lead">Usuarios Registrados</h4>
+        <div className=" row title m-5">
+          <h4 className="lead">Usuarios Registrados </h4>
+          <hr/>
+          <h4 className="lead"><a href="usuarios/agregar"><i className="fas fa-user-plus"></i></a></h4>
+          
         </div>
         <div className="row">
           {usuarios.data ? (

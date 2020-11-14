@@ -24,7 +24,7 @@ export const Sidebar = () => {
                   .map((usuario) => (
                     <a
                       className="nav-link text-capitalize"
-                      href="!#"
+                      href={`/perfil/${id}`}
                       key={idUsuario}
                     >
                       <img

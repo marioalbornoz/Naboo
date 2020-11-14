@@ -54,6 +54,11 @@ export function ObtenerNumMes(date){
     const mes = fecha.split("-")[1];
     return mes-1;
 }
+// funcion que entrega las carreras por escuela
+export function carreraPorEscuelas(escuela, carreras){
+  const carreraescuela=carreras.filter( carrera => carrera.escuela === (escuela));
+  return carreraescuela;
+}
 
 export const rolUsuario = (rol) => {
     switch (rol) {

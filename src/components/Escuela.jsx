@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Carreras } from './Carreras';
 
 export const Escuela = ({escuelaNombre, carreras}) => {
